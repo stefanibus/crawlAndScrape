@@ -11,4 +11,9 @@ module.exports = withBundleAnalyzer({
   // So, the source code is "basePath-ready".
   // You can remove `basePath` if you don't need it.
   reactStrictMode: true,
-});
+  webpack5: true,
+  webpack: (config) => {
+    config.resolve.fallback = { fs: false }; 
+    return config;
+  },
+}); 
