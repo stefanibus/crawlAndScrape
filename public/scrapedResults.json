@@ -1,0 +1,9 @@
+{
+  "crawlURL": "https://www.scraping-bot.io/crawler/index.html",
+  "depthInfo": "2",
+  "resultArray": {
+    "resultArray": 1,
+    "something": "more"
+  },
+  "SeverFile": "http://localhost:3000/scrapedResults.json"
+}
