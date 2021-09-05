@@ -102,7 +102,7 @@ export const DemoScraper = ({
                       </span>
                       <a
                         target="_blank"
-                        href={`${depthToCrawl}/?crawlURL=${pointToStartFullURL}&searchString=${termToSearch}`}
+                        href={`api/${depthToCrawl}/?crawlURL=${pointToStartFullURL}&searchString=${termToSearch}`}
                         className="font-medium text-indigo-600 hover:text-indigo-500"
                         rel="noreferrer"
                       >
