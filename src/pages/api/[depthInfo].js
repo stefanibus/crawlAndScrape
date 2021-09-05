@@ -50,11 +50,12 @@ export default async (req, res) => {
   const scrapedData = () => {
     return JSON.stringify(
       {
-        see_Static_Json_File_on_Server_at: 'http://localhost:3000/scraped.json',
+        see_Static_Json_File_on_Server_at:
+          'https://crawl-and-scrape.vercel.app/scraped.json',
         crawlURL,
         depthInfo,
         searchString,
-        SeverFile: 'http://localhost:3000/scrapedResults.json',
+        SeverFile: 'https://crawl-and-scrape.vercel.app/scraped.json',
         printList,
         scrapedDetails,
       },

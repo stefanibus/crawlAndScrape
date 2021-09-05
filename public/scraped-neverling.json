@@ -1,8 +1,8 @@
 {
-  "see_Static_Json_File_on_Server_at": "http://localhost:3000/scraped.json",
+  "see_Static_Json_File_on_Server_at": "https://crawl-and-scrape.vercel.app/scraped.json",
   "crawlURL": "https://nevelingreply.de/competence",
   "depthInfo": "2",
-  "SeverFile": "http://localhost:3000/scrapedResults.json",
+  "SeverFile": "https://crawl-and-scrape.vercel.app/scraped.json",
   "printList": [
     "https://nevelingreply.de/competence ",
     "--https://nevelingreply.de/ ",

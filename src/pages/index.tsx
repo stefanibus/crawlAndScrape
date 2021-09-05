@@ -12,7 +12,7 @@ const Index = () => {
           meta={
             <Meta
               title="Next.js Crawler and Scraper for nevelingreply.de"
-              description="Next js Boilerplate is the perfect starter code for your project. Build your React application with the Next.js framework."
+              description="Next Crawler and Scraper"
             />
           }
         >
@@ -199,7 +199,9 @@ const Index = () => {
           </ul>
           <p>
             Check my GitHub project for more information about{' '}
-            <a href="">Nextjs Boilerplate</a>
+            <a href="https://github.com/stefanibus/crawlAndScrape/">
+              Nextjs crawl and scrape
+            </a>
           </p>
         </Main>
       </div>

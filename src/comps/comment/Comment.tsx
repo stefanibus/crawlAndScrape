@@ -17,7 +17,7 @@ export const Comment = () => {
           Built with NextJS and Tailwind CSS.
           <br />
           <br />
-          Github: https://github.com/stefanibus
+          Github: https://github.com/stefanibus/crawlAndScrape/
           <br />
           <br />
           <br />

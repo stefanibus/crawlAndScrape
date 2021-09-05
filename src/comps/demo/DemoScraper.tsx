@@ -102,7 +102,7 @@ export const DemoScraper = ({
                       </span>
                       <a
                         target="_blank"
-                        href={`http://localhost:3000/api/${depthToCrawl}/?crawlURL=${pointToStartFullURL}&searchString=${termToSearch}`}
+                        href={`${depthToCrawl}/?crawlURL=${pointToStartFullURL}&searchString=${termToSearch}`}
                         className="font-medium text-indigo-600 hover:text-indigo-500"
                         rel="noreferrer"
                       >
@@ -126,7 +126,7 @@ export const DemoScraper = ({
                       </span>
                       <a
                         target="_blank"
-                        href={`http://localhost:3000/${staticReference}`}
+                        href={`${staticReference}`}
                         className="font-medium text-indigo-600 hover:text-indigo-500"
                         rel="noreferrer"
                       >
@@ -146,7 +146,7 @@ export const DemoScraper = ({
             <span className="token tag">
               <span className="token tag">
                 <span className="domain and path">
-                  http://localhost:3000/api/
+                  https://crawl-and-scrape.vercel.app/api/
                   <span className="ScrawlingDepth font-bold text-code-100">
                     {depthToCrawl}/
                   </span>

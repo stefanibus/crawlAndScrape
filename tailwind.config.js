@@ -19,7 +19,7 @@ module.exports = {
     },
     extend: {
       backgroundImage: theme => ({
-        'hero-about': "url('http://localhost:3000/assets/images/scraping-animated_.gif')", 
+        'hero-about': "url('https://crawl-and-scrape.vercel.app/assets/images/scraping-animated_.gif')", 
        }),
       colors: { 
         'light-blue': colors.lightBlue,
