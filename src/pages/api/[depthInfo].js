@@ -1,17 +1,14 @@
-// pages/posts/[id].js mydomain.com/2/?crawl=https:www.nivea.de
+// we are on this page:  pages/posts/[id].js
+// this page is requested as follows:  https://thisdomain.com/2/?crawlURL=https://nevelingreply.de/competence&searchString=Dienstleister
+// DOCUMENTATION = https://github.com/Scrapingbot/crawler
+// API Documentation = https:/www.scraping-bot.io/web-scraping-documentation/
+
 export default async (req, res) => {
-  const { crawlURL, depthInfo } = req.query
-  // res.end(`Depth: ${depth} \nCrawl: ${crawlURL}`)
-  // eslint-disable-next-line no-console
-  // console.log(`Depth: ${depthInfo} \nCrawl: ${crawlURL}`)
-  // DOCUMENTATION = https://github.com/Scrapingbot/crawler  ,
-  // SOURCE = https:/www.scraping-bot.io/web-scraping-documentation/
+  const { crawlURL, depthInfo, searchString } = req.query
 
   /* eslint-disable global-require */
-
   const request = require('request')
   const util = require('util')
-
   const rp = util.promisify(request)
   const sleep = util.promisify(setTimeout)
   const cheerio = require('cheerio')
@@ -19,16 +16,12 @@ export default async (req, res) => {
   const fs = require('fs')
   /* eslint-enable global-require */
 
-  // const dbconfig = require('./dbconfig.js')
-
   const seenLinks = {}
-
   let rootNode = {}
   let currentNode = {}
-
   const linksQueue = []
   const printList = []
-
+  const scrapedDetails = []
   let previousDepth = 0
   let maxCrawlingDepth = 1 // default is 5
 
@@ -54,8 +47,21 @@ export default async (req, res) => {
     'base64',
   )}`
 
-  // eslint-disable-next-line no-console
-  console.log('username: ', username)
+  const scrapedData = () => {
+    return JSON.stringify(
+      {
+        see_Static_Json_File_on_Server_at: 'http://localhost:3000/scraped.json',
+        crawlURL,
+        depthInfo,
+        searchString,
+        SeverFile: 'http://localhost:3000/scrapedResults.json',
+        printList,
+        scrapedDetails,
+      },
+      null,
+      2,
+    )
+  }
 
   const requestOptions = {
     method: 'POST',
@@ -65,7 +71,7 @@ export default async (req, res) => {
       // scraing-bot options
       options: {
         useChrome: false,
-        // if you want to use headless chrome WARNING two api calls wiil be
+        // if you want to use headless chrome WARNING two api calls will be
         // consumed for this option
         premiumProxy: false,
         // if you want to use premium proxies Unblock Amazon,linkedIn (consuming
@@ -78,27 +84,15 @@ export default async (req, res) => {
     },
   }
 
-  // Start Application put here the adress  you want to start your crawling with
-  // second parameter is depth with 1: it will scrape all the links...
+  // Start Application: enter the adress you want to start your crawling with.
+  // Second parameter is depth with 1: it will scrape all the links...
   // ...found on the first page but not the ones found on other pages
   // if you put 2 it will scrape all links on first page and all links found on
   // second level pages be careful with this on a huge website it will represent
   // tons of pages to scrape
   // it is recommended to limit to 5 levels
-  //
-  // crawlBFS('https://www.scraping-bot.io/crawler/index.html', 1)
   // eslint-disable-next-line no-use-before-define
-  crawlBFS(crawlURL, 1)
-  // it is recommanded to limit to 1 levels
-  // crawlBFS("https://www.nivea.de", 1);
-
-  function killedTemoarily() {
-    // eslint-disable-next-line no-console
-    // console.log(`  The crawler is currently deactivated -->
-    // crawlBFS func is not called -->
-    // see code-lines above this message! `)
-  }
-  killedTemoarily()
+  crawlBFS(crawlURL, depthInfo)
 
   // eslint-disable-next-line
   async function crawlBFS(startURL, maxDepth = 5) {
@@ -116,12 +110,12 @@ export default async (req, res) => {
     const startLinkObj = new CreateLink(startURL, 0, null)
 
     // eslint-disable-next-line no-console
-    console.log(
-      'startURL: und mainParsedUrl: und startLinkObj: ',
-      startURL,
-      mainParsedUrl,
-      startLinkObj,
-    )
+    // console.log(
+    //   'startURL: und mainParsedUrl: und startLinkObj: ',
+    //   startURL,
+    //   mainParsedUrl,
+    //   startLinkObj,
+    // )
 
     // eslint-disable-next-line
     rootNode = currentNode = startLinkObj
@@ -144,7 +138,8 @@ export default async (req, res) => {
     // lets set the url we want to scrape
     requestOptions.json.url = linkObj.url
     // eslint-disable-next-line no-console
-    console.log(`Scraping URL : ${linkObj.url}`)
+    console.log(`\n\n\nScraping URL : ${linkObj.url}`)
+
     let response
     try {
       response = await rp(requestOptions)
@@ -173,35 +168,53 @@ export default async (req, res) => {
         .map(function (i, x) {
           return $(this).attr('href')
         })
+
       if (links.length > 0) {
-        // eslint-disable-next-line array-callback-return
+        // eslint-disable-next-line array-callback-return, consistent-return
         links.map((i, x) => {
           // eslint-disable-next-line no-use-before-define
           const reqLink = checkDomain(x)
           if (reqLink) {
             // eslint-disable-next-line
             if (reqLink != linkObj.url) {
+              // eslint-disable-next-line no-console
+              // console.log('linkObj.url in links array ', linkObj.url)
+
               const newLinkObj = new CreateLink(
                 reqLink,
                 linkObj.depth + 1,
                 linkObj,
               )
               // eslint-disable-next-line no-use-before-define, no-undef
-              addToLinkQueue(newLinkObj)
+              return addToLinkQueue(newLinkObj)
             }
           }
         })
       } else {
         // eslint-disable-next-line no-console
         console.log(`No more links found for ${requestOptions.url}`)
+        return
       }
 
       // check if a specific string occurres in the whole content of the page
-      const checkForString = $('body').text().indexOf('Handcreme') > -1
-      if (checkForString) {
-        // eslint-disable-next-line no-console
-        console.log('This URL contains the string: HANDCREME', checkForString)
-      }
+      const checkIfStringIsPresent = $('body').text().indexOf(searchString) > -1
+      // eslint-disable-next-line no-console
+      console.log(
+        'Check if this URL contains the string: ',
+        searchString,
+        'and the result is: ',
+        `${checkIfStringIsPresent}\n\n\n`,
+      )
+
+      // eslint-disable-next-line no-param-reassign
+      linkObj.checkIfStringIsPresent = checkIfStringIsPresent
+
+      const fullbody = response.body
+      // eslint-disable-next-line no-console
+      // console.log('fullbody: ', `${fullbody}`)
+
+      // eslint-disable-next-line no-param-reassign
+      linkObj.fullbody = fullbody
 
       // eslint-disable-next-line no-use-before-define
       const nextLinkObj = getNextInQueue()
@@ -229,6 +242,29 @@ export default async (req, res) => {
         setRootNode()
         // eslint-disable-next-line no-use-before-define
         printTree()
+
+        const printToJSON = () => {
+          // Write the DATA into file
+          // eslint-disable-next-line func-names
+          fs.writeFile(
+            'public/scraped.json',
+            scrapedData(),
+            // eslint-disable-next-line func-names
+            function (err) {
+              // eslint-disable-next-line no-console
+              if (err) return console.log(err)
+              // eslint-disable-next-line no-console
+              console.log(
+                `\n\n\n\nThis Result is saved on the Sever inside of a separate json-file named: scraped.json. \nYou may request that JSON-data at: http://myNetlifydomain.com/./scraped.json. \nThe json-File you currently look at has the following URL:\nhttp://myNetlifydomain.com/5/?crawlURL=${crawlURL}\n\n\n`,
+              )
+              return ' '
+            },
+          )
+
+          // Create Write DATA into this JSON file
+          res.end(scrapedData())
+        }
+        printToJSON()
       }
     } catch (err) {
       // eslint-disable-next-line no-console
@@ -248,12 +284,33 @@ export default async (req, res) => {
     // eslint-disable-next-line no-use-before-define
     addToPrintDFS(rootNode)
     // eslint-disable-next-line no-console
-    console.log(printList.join('\n|'))
+    console.log(
+      '\n\n\n\nPrintTree() will now join the printList ',
+      printList.join('\n|'),
+      scrapedDetails.reverse(),
+    )
   }
 
   function addToPrintDFS(node) {
+    // eslint-disable-next-line no-console
+    // console.log('node stefano analysis: ', node)
     const spaces = Array(node.depth * 3).join('-')
-    printList.push(spaces + node.url)
+    printList.push(`${spaces + node.url} `)
+    if (node.checkIfStringIsPresent) {
+      scrapedDetails.push({
+        depth: node.depth,
+        searchString: node.checkIfStringIsPresent,
+        url: node.url,
+        fullbody: node.fullbody,
+      })
+    } else {
+      scrapedDetails.push({
+        depth: node.depth,
+        searchString: node.checkIfStringIsPresent,
+        url: node.url,
+      })
+    }
+    // scrapedDetails.push(node.depth, node.checkIfStringIsPresent, node.url)
     if (node.children) {
       // eslint-disable-next-line
       node.children.map((i, x) => {
@@ -283,7 +340,7 @@ export default async (req, res) => {
       }
       if (linkURL.indexOf('#') === 0) {
         // anchor avoid link
-        return '' // stefano check this (the '')
+        return false // stefano check this (the '')
       }
       // relative url
       const path = currentNode.url.match('.*/')[0]
@@ -298,7 +355,7 @@ export default async (req, res) => {
       parsedUrl.hash = ''
       return parsedUrl.href
     }
-    return '' // stefano check this (return and '')
+    return false // stefano check this (return and '')
   }
 
   function addToLinkQueue(linkobj) {
@@ -325,6 +382,8 @@ export default async (req, res) => {
 
   // Adds links we've visited to the seenList
   function addToSeen(linkObj) {
+    // eslint-disable-next-line no-console
+    // console.log('linkObj: ', linkObj)
     seenLinks[linkObj.url] = linkObj
   }
 
@@ -332,32 +391,4 @@ export default async (req, res) => {
   function linkInSeenListExists(linkObj) {
     return seenLinks[linkObj.url] != null
   }
-
-  const resultArray = { resultArray: 1, something: 'more' }
-
-  const scrapedData = () => {
-    return JSON.stringify(
-      {
-        crawlURL,
-        depthInfo,
-        resultArray,
-        SeverFile: 'http://localhost:3000/scrapedResults.json',
-      },
-      null,
-      2,
-    )
-  }
-
-  // eslint-disable-next-line func-names
-  fs.writeFile('public/scrapedResults.json', scrapedData(), function (err) {
-    // eslint-disable-next-line no-console
-    if (err) return console.log(err)
-    // eslint-disable-next-line no-console
-    console.log(
-      'The JSON-data can be requested at: http://myNetlifydomain.com/2/?crawlURL=https:www.google.de  AND the Result is additionally saved on Sever, see file: ./scrapedResults.json.',
-    )
-    return ' '
-  })
-
-  res.end(scrapedData())
 }
