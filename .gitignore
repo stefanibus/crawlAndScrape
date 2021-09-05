@@ -2,6 +2,7 @@
 
 #intern
 stefano-intern/
+/stefano-intern
 
 # dependencies
 /node_modules

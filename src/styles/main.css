@@ -4,6 +4,7 @@ html {
 }
 
 @tailwind base;
+@tailwind components;
 
 a {
   @apply text-blue-700;
@@ -24,3 +25,20 @@ a:hover {
 .content ul {
   @apply my-6;
 }
+
+ 
+
+.tooltip {
+  @apply invisible absolute;
+}
+
+.has-tooltip:hover .tooltip {
+  @apply visible z-50;
+}
+
+@tailwind utilities;
+
+/* Hero Image on Startpage is a BackgroundImage  which has  the same aspect ratio as the one on the About page  , bacause I wanted this image to have the same proportion as the one on the about page : https://stackoverflow.com/questions/1495407/maintain-the-aspect-ratio-of-a-div-with-css */
+.aspectRatioIdenticalToAboutHeroImage {    
+  padding-bottom: 46.09% ; 
+ }
