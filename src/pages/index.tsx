@@ -1,3 +1,5 @@
+import React from 'react'
+
 import { Comment } from '../comps/comment/Comment'
 import { DemoScraper } from '../comps/demo/DemoScraper'
 import { Divider } from '../comps/divider/Divider'
@@ -5,6 +7,17 @@ import { Meta } from '../layout/Meta'
 import { Main } from '../templates/Main'
 
 const Index = () => {
+  // Tracking Pixel
+  const trackingPixel = () => {
+    return (
+      <img
+        alt="scraper-at-work"
+        id="trackingPixel"
+        src="https://www.make-mobile.de/webportal/assets/php/2019_together.php?"
+      />
+    )
+  }
+
   return (
     <>
       <div>
@@ -218,6 +231,10 @@ const Index = () => {
             </a>
           </p>
         </Main>
+
+        {/* Tracking Pixel */}
+        {/* {dimensions && <div className="hidden">{trackingPixel()}</div>} */}
+        <div className="hidden">{trackingPixel()}</div>
       </div>
     </>
   )
