@@ -93,7 +93,7 @@ export const DemoScraper = ({
                   </div>
                   <div className="ml-4 flex-shrink-0">
                     <div className="has-tooltip">
-                      <span className="tooltip rounded shadow-lg p-1 bg-gray-100 text-red-500 -mt-20">
+                      <span className="tooltip rounded shadow-lg p-1 bg-gray-100 text-red-500  -mt-28 sm:-mt-20  -ml-20 ">
                         Attention: The scraper will start to run!
                         <br />
                         Please wait approx. 60 seconds
@@ -121,7 +121,7 @@ export const DemoScraper = ({
                   </div>
                   <div className="ml-4 flex-shrink-0">
                     <div className="has-tooltip">
-                      <span className="tooltip rounded shadow-lg p-1 bg-gray-100 text-red-500 -mt-8">
+                      <span className="tooltip rounded shadow-lg p-1 bg-gray-100 text-red-500 -mt-28 sm:-mt-10 -ml-20">
                         Click here for an instant result.
                       </span>
                       <a

@@ -3,7 +3,7 @@ export const Comment = () => {
   return (
     <>
       <div>
-        <p>
+        <p className="break-words">
           I might not further develop this plattform within the upcomming days,
           as the external API-service has prooven to be considerably weak.
           <br />
