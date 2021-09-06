@@ -2,11 +2,15 @@
 ##### Using an API-service from scraping-bot.io
 
  
-##### Demo: https://adoring-hopper-4337db.netlify.app/
  
 ---
 
-[![Sponsor Next JS Boilerplate](https://raw.githubusercontent.com/stefanibus/crawlAndScrape/main/public/assets/images/imageScraper2.png?raw=true)](https://crawl-and-scrape.vercel.app/)  
+[![Sponsor Next JS Boilerplate](https://raw.githubusercontent.com/stefanibus/crawlAndScrape/main/public/assets/images/imageScraper2.png?raw=true)](https://crawl-and-scrape.vercel.app/)
+
+
+#### Demo: https://crawl-and-scrape.vercel.app/
+
+
 ### Web scraping service  with three parameters: "Domain/Path", "CrawlingDepth" and "Searchterm" 
 🚀 This is a Web scraping service to scrape and extract data from any webpage without getting blocked. The three examples below showcase the different CrawlingDepth the user can apply, as well as the way the "Domain and Path" can be choosen to start the scrawl. ⚡️
 ### matching Files will be copied to your server
