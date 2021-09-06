@@ -155,7 +155,6 @@ export default async (req, res) => {
         // eslint-disable-next-line no-console
         console.log(
           `This URL probably has a 301 or 302 status code (page redirect). The URL is: ${response.statusCode}`,
-          response.body,
         )
       } else {
         // catch potential success
@@ -182,16 +181,17 @@ export default async (req, res) => {
           const reqLink = checkDomain(x)
           if (reqLink) {
             // eslint-disable-next-line
-            if (reqLink != linkObj.url) {
-              // eslint-disable-next-line no-console
-              // console.log('linkObj.url in links array ', linkObj.url)
-
+              const checkPDF = reqLink.substr(reqLink.lastIndexOf('.pdf') + 1)           
+            // exclude pdf files AND
+            // make sure reqLink is NOT EQUAL TO the linkObj.url
+            if (reqLink !== linkObj.url && checkPDF !== 'pdf') {
+              // eslint-disable-next-line no-use-before-define, no-undef
               const newLinkObj = new CreateLink(
                 reqLink,
                 linkObj.depth + 1,
                 linkObj,
               )
-              // eslint-disable-next-line no-use-before-define, no-undef
+              // eslint-disable-next-line no-use-before-define
               return addToLinkQueue(newLinkObj)
             }
           }
@@ -199,7 +199,8 @@ export default async (req, res) => {
       } else {
         // eslint-disable-next-line no-console
         console.log(`No more links found for ${requestOptions.url}`)
-        return
+        // I dont think this condition should return
+        // return
       }
 
       // check if a specific string occurres in the whole content of the page
