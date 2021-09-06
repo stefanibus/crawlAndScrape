@@ -6,7 +6,7 @@
  
 ---
 
-[![Sponsor Next JS Boilerplate](https://raw.githubusercontent.com/stefanibus/crawlAndScrape/main/public/assets/images/trueimageScraper2.png?raw=trueimageScraper2.png?raw=true)](https://crawl-and-scrape.vercel.app/)  
+[![Sponsor Next JS Boilerplate](https://raw.githubusercontent.com/stefanibus/crawlAndScrape/main/public/assets/images/imageScraper2.png?raw=true)](https://crawl-and-scrape.vercel.app/)  
 ### Web scraping service  with three parameters: "Domain/Path", "CrawlingDepth" and "Searchterm" 
 🚀 This is a Web scraping service to scrape and extract data from any webpage without getting blocked. The three examples below showcase the different CrawlingDepth the user can apply, as well as the way the "Domain and Path" can be choosen to start the scrawl. ⚡️
 ### matching Files will be copied to your server
@@ -96,7 +96,7 @@ Clone this repository on own GitHub account and deploy to Vercel:
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https%3A%2F%2Fgithub.com%2Fstefanibus%2FcrawlAndScrape)
  
 
- 
+
 ### License
 
 Licensed under the MIT License, Copyright © 2020
