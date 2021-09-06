@@ -70,8 +70,8 @@ const Index = () => {
             searchstring-term will be stored to our server.
           </p>
           <DemoScraper
-            pointToStart="triplesensereply.de/agency"
-            pointToStartFullURL="https://www.triplesensereply.de/agency/"
+            pointToStart="triplesensereply.de/agentur"
+            pointToStartFullURL="https://www.triplesensereply.de/agentur/"
             depthToCrawl={1}
             termToSearch="Frontend Developer"
             staticReference="scraped-triplesensereply.json"
