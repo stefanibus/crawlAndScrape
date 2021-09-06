@@ -110,14 +110,6 @@ export default async (req, res) => {
 
     const startLinkObj = new CreateLink(startURL, 0, null)
 
-    // eslint-disable-next-line no-console
-    // console.log(
-    //   'startURL: und mainParsedUrl: und startLinkObj: ',
-    //   startURL,
-    //   mainParsedUrl,
-    //   startLinkObj,
-    // )
-
     // eslint-disable-next-line
     rootNode = currentNode = startLinkObj
     // eslint-disable-next-line no-use-before-define
@@ -144,7 +136,8 @@ export default async (req, res) => {
     let response
     try {
       response = await rp(requestOptions)
-      if (response.statusCode !== 200) {
+      // catch errors
+      if (response.statusCode > 399) {
         if (response.statusCode === 401 || response.statusCode === 405) {
           // eslint-disable-next-line no-console
           console.log('autentication failed check your credentials')
@@ -156,6 +149,18 @@ export default async (req, res) => {
           )
         }
         return
+      }
+      // catch redirects
+      if (response.statusCode === 301 || response.statusCode === 302) {
+        // eslint-disable-next-line no-console
+        console.log(
+          `This URL probably has a 301 or 302 status code (page redirect). The URL is: ${response.statusCode}`,
+          response.body,
+        )
+      } else {
+        // catch potential success
+        // eslint-disable-next-line no-console
+        console.log(`This URL probably has a 200 success status code.`)
       }
       // look for the links inside in the whole content of the page
       const $ = cheerio.load(response.body)
