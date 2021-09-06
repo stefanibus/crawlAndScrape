@@ -28,9 +28,9 @@ const Index = () => {
               🚀
             </span>{' '}
             This is a Web scraping service to scrape and extract data from any
-            webpage without getting blocked! The two examples below showcase the
-            different CrawlingDepth the user can apply, as well as the way the
-            &quot;Domain and Path&quot; can be choosen to start the scrawl.{' '}
+            webpage without getting blocked! The three examples below showcase
+            the different CrawlingDepth the user can apply, as well as the way
+            the &quot;Domain and Path&quot; can be choosen to start the scrawl.{' '}
             <span role="img" aria-label="zap">
               ⚡️
             </span>{' '}
@@ -61,6 +61,20 @@ const Index = () => {
             depthToCrawl={5}
             termToSearch="my paragraph of the second page"
             staticReference="scraped-scraping-bot.json"
+          />
+          <Divider />
+          <p className="pt-12">
+            The third Example will search all across the domain:
+            triplesensereply.de and scrape all pages containing the term
+            &quot;Frontend Developer&quot;. All pages containing that
+            searchstring-term will be stored to our server.
+          </p>
+          <DemoScraper
+            pointToStart="triplesensereply.de/agency"
+            pointToStartFullURL="https://www.triplesensereply.de/agency/"
+            depthToCrawl={1}
+            termToSearch="Frontend Developer"
+            staticReference="scraped-triplesensereply.json"
           />
           <Comment />
           <h2 className="font-semibold text-lg">

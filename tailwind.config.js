@@ -22,7 +22,7 @@ module.exports = {
         'hero-about': "url('https://crawl-and-scrape.vercel.app/assets/images/scraping-animated_.gif')", 
        }),
       colors: { 
-        'light-blue': colors.lightBlue,
+        'light-blue': colors.sky,
         cyan: colors.cyan,
         fuchsia: colors.fuchsia,
         amber: colors.amber, 
