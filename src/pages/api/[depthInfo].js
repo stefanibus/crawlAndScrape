@@ -235,7 +235,7 @@ export default async (req, res) => {
         const minimumWaitTime = 500
         // half a second these values are very low on a real worl example you
         // should use at least 30000 (30 seconds between each call)
-        const maximumWaitTime = 5000 // max five seconds
+        const maximumWaitTime = 4000 // max four seconds
         const waitTime = Math.round(
           minimumWaitTime + Math.random() * (maximumWaitTime - minimumWaitTime),
         )
