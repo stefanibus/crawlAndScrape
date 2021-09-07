@@ -63,19 +63,31 @@ Open http://localhost:3000 with your favorite browser to see your project.
 
 ```
 .
-├── README.md                # README file
-├── next.config.js           # Next JS configuration
-├── public                   # Public folder
-│   └── assets
-│       └── images           # Image used by default template
-├── src
-│   ├── layout               # Atomic layout components
-│   ├── pages                # Next JS pages
-│   ├── styles               # PostCSS style folder with Tailwind
-│   ├── templates            # Default template
-│   └── utils                # Utility folder
-├── tailwind.config.js       # Tailwind CSS configuration
-└── tsconfig.json            # TypeScript configuration
+📦src
+ ┣ 📂comps
+ ┃ ┣ 📂comment
+ ┃ ┃ ┗ 📜Comment.tsx
+ ┃ ┣ 📂demo
+ ┃ ┃ ┗ 📜DemoScraper.tsx
+ ┃ ┗ 📂divider
+ ┃ ┃ ┗ 📜Divider.tsx
+ ┣ 📂layout
+ ┃ ┗ 📜Meta.tsx
+ ┣ 📂pages
+ ┃ ┣ 📂about
+ ┃ ┃ ┗ 📜index.tsx
+ ┃ ┣ 📂api
+ ┃ ┃ ┗ 📜[depthInfo].js
+ ┃ ┣ 📜index.tsx
+ ┃ ┣ 📜_app.tsx
+ ┃ ┗ 📜_document.tsx
+ ┣ 📂styles
+ ┃ ┗ 📜main.css
+ ┣ 📂templates
+ ┃ ┗ 📜Main.tsx
+ ┗ 📂utils
+ ┃ ┗ 📜AppConfig.ts
+
 ```
  
 
