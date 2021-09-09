@@ -44,7 +44,7 @@ export const DemoScraper = ({
               CrawlingDepth Limit:
             </dt>
             <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-              Level {depthToCrawl}
+              {`Level ${depthToCrawl}`}
             </dd>
           </div>
           <div className="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
@@ -52,7 +52,7 @@ export const DemoScraper = ({
               Scraper-Searchterm
             </dt>
             <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-              &quot;{termToSearch}&quot;
+              {`${depthToCrawl}`}
             </dd>
           </div>
           <div className="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
@@ -66,13 +66,13 @@ export const DemoScraper = ({
           <div className="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
             <dt className="text-sm font-medium text-gray-500">About</dt>
             <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-              The Crawler will begin to search for all links at the initial
+              {`The Crawler will begin to search for all links at the initial
               Startingpoint (as provided for the Crawler). From there, all LINKS
               will be crawled down to the provided Level of Crawling Depth (in
-              this case : {depthToCrawl} ). The entire content of all pages will
+              this case: ${depthToCrawl}). The entire content of all pages will
               be scraped and EACH page containing the relevant searchterm (in
-              this case : &quot;{termToSearch}&quot;) will be stored in one
-              single JSON FILE (FullBody HTML Content) on our server.
+              this case: &quot;${termToSearch}&quot;) will be stored in one
+              single JSON FILE (FullBody HTML Content) on our server.`}
             </dd>
           </div>
           <div className="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
@@ -157,7 +157,7 @@ export const DemoScraper = ({
                   <span className="crawlURL font-bold text-yellow-400">
                     &searchString=
                   </span>
-                  {termToSearch}
+                  {`${termToSearch}`}
                 </span>
               </span>
             </span>

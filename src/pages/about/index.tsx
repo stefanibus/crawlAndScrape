@@ -18,11 +18,11 @@ const About = () => {
       <p>
         <span role="img" aria-label="rocket">
           🚀
-        </span>{' '}
+        </span>
         This is a Web scraping service to scrape and extract data from any
-        webpage without getting blocked!&nbsp;The two examples below showcase
-        the different CrawlingDepth the user can apply, as well as the way the
-        &quot;Domain and Path&quot; can be choosen to start the scrawl.{' '}
+        webpage without getting blocked! The three examples below showcase the
+        different CrawlingDepth the user can apply, as well as the way the
+        &quot;Domain and Path&quot; can be choosen to start the scrawl.
         <span role="img" aria-label="zap">
           ⚡️
         </span>{' '}

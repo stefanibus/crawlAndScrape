@@ -53,10 +53,12 @@ const Main = (props: IMainProps) => (
       <div className="py-5 text-xl content">{props.children}</div>
 
       <div className="border-t border-gray-300 text-center py-8 text-sm">
-        © Copyright {new Date().getFullYear()} {AppConfig.title}. Powered with{' '}
+        {` © Copyright ${new Date().getFullYear()} ${
+          AppConfig.title
+        }. Powered with `}
         <span role="img" aria-label="Love">
-          ♥
-        </span>{' '}
+          {` ♥ `}
+        </span>
         by <a href="https://make-mobile.de">Make-Mobile.de</a>
       </div>
     </div>

@@ -30,7 +30,7 @@ const Index = () => {
           }
         >
           <div className="overflow-hidden bg-cover bg-hero-about relative">
-            <div className="aspectRatioIdenticalToAboutHeroImage" />
+            <div className="aspectRatioIdenticalToAboutHeroImage pb-46%" />
           </div>
           <h1 className="font-bold text-2xl">
             All Files matching the searchterm you choose will be copied to the
@@ -39,11 +39,10 @@ const Index = () => {
           <p>
             <span role="img" aria-label="rocket">
               🚀
-            </span>{' '}
-            This is a Web scraping service to scrape and extract data from any
-            webpage without getting blocked! The three examples below showcase
-            the different CrawlingDepth the user can apply, as well as the way
-            the &quot;Domain and Path&quot; can be choosen to start the scrawl.{' '}
+            </span>
+            {
+              'This is a Web scraping service to scrape and extract data from any webpage without getting blocked! The three examples below showcase the different CrawlingDepth the user can apply, as well as the way the &quot;Domain and Path&quot; can be choosen to start the scrawl.'
+            }
             <span role="img" aria-label="zap">
               ⚡️
             </span>{' '}
