@@ -3,6 +3,8 @@ import React from 'react'
 
 import { DocumentReportIcon, FingerPrintIcon } from '@heroicons/react/solid'
 
+import { server } from '../../utils/AppConfig'
+
 type CardProps = {
   pointToStart: string
   pointToStartFullURL: string
@@ -146,7 +148,7 @@ export const DemoScraper = ({
             <span className="token tag">
               <span className="token tag">
                 <span className="domain and path">
-                  https://crawl-and-scrape.vercel.app/api/
+                  {server}/api/
                   <span className="ScrawlingDepth font-bold text-code-100">
                     {depthToCrawl}/
                   </span>

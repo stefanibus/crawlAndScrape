@@ -2,6 +2,7 @@
 // this page is requested as follows:  https://thisdomain.com/2/?crawlURL=https://nevelingreply.de/competence&searchString=Dienstleister
 // DOCUMENTATION = https://github.com/Scrapingbot/crawler
 // API Documentation = https:/www.scraping-bot.io/web-scraping-documentation/
+import { server } from '../../utils/AppConfig.ts'
 
 export default async (req, res) => {
   const { crawlURL, depthInfo, searchString } = req.query
@@ -262,7 +263,7 @@ export default async (req, res) => {
               if (err) return console.log(err)
               // eslint-disable-next-line no-console
               console.log(
-                `\n\n\n\nThis Result is saved on the Sever inside of a separate json-file named: scraped.json. \nYou may request that JSON-data at: http://myNetlifydomain.com/./scraped.json. \nThe json-File you currently look at has the following URL:\nhttp://myNetlifydomain.com/5/?crawlURL=${crawlURL}\n\n\n`,
+                `\n\n\n\nThis Result is saved on the Sever inside of a separate json-file named: scraped.json. \nYou may request that JSON-data at: https://crawl-and-scrape.vercel.app/scraped.json. \nThe json-File you currently look at has the following URL:\n${server}/api/${depthInfo}/?crawlURL=${crawlURL}/&searchString=${searchString}\n\n\n`,
               )
               return ' '
             },
@@ -299,8 +300,6 @@ export default async (req, res) => {
   }
 
   function addToPrintDFS(node) {
-    // eslint-disable-next-line no-console
-    // console.log('node stefano analysis: ', node)
     const spaces = Array(node.depth * 3).join('-')
     printList.push(`${spaces + node.url} `)
     if (node.checkIfStringIsPresent) {
