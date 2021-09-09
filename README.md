@@ -1,5 +1,5 @@
 # Crawler and Scraper on NextJS
-##### Using an API-service from scraping-bot.io
+##### Using an API-service from scraping-bot.io   [![Scraping-bot.io Logo](https://www.scraping-bot.io/wp-content/uploads/2019/07/logo_scrapingbot-full-white-192x35.png?raw=true)](https://www.scraping-bot.io/)
 
  
  

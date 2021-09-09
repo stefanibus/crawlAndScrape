@@ -18,6 +18,10 @@ module.exports = {
       '6xl': '4rem',
     },
     extend: {
+      
+      spacing: {
+          '46%': '46.09%', // pb-46% will ensure the same aspect ratio as the Image on the About page has by default, see: https://stackoverflow.com/questions/1495407/maintain-the-aspect-ratio-of-a-div-with-css  This will take care of the aspect-ratio between the width and the height for the Hero Image on the Startpage*/
+      },
       backgroundImage: theme => ({
         'hero-about': "url('https://crawl-and-scrape.vercel.app/assets/images/scraping-animated_.gif')", 
        }),
@@ -65,4 +69,3 @@ module.exports = {
     }},
   plugins: [],
 };
- 
