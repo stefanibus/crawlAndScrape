@@ -71,7 +71,7 @@ export const DemoScraper = ({
               will be crawled down to the provided Level of Crawling Depth (in
               this case: ${depthToCrawl}). The entire content of all pages will
               be scraped and EACH page containing the relevant searchterm (in
-              this case: &quot;${termToSearch}&quot;) will be stored in one
+              this case: "${termToSearch}") will be stored in one
               single JSON FILE (FullBody HTML Content) on our server.`}
             </dd>
           </div>
