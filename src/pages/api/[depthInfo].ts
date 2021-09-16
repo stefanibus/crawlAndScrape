@@ -196,12 +196,14 @@ async function crawlBFS(startURL: string | string[] | undefined, maxDepth: numbe
       const links = $('body')
         .find('a')
         // eslint-disable-next-line
-      .filter( (i: { attr: (arg0: string) => null }, _el: any) => {
-          return i.attr('href') != null
+ 
+        // eslint-disable-next-line
+        .filter(function (i, el) {
+          return $(this).attr('href') != null
         })
         // eslint-disable-next-line no-unused-vars, func-names
-        .map((i: { attr: (arg0: string) => any }, _x: any) => {
-          return i.attr('href')
+        .map(function (i, x) {
+          return $(this).attr('href')
         })
 
       if (links.length > 0) {
