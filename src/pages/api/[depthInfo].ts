@@ -1,38 +1,67 @@
-// we are on this page:  pages/posts/[id].js
-// this page is requested as follows:  https://thisdomain.com/2/?crawlURL=https://nevelingreply.de/competence&searchString=Dienstleister
+// we are on this page:  api/[depthinfo].js
+// this page is requested as follows:  https://thisdomain.com/api/2/?crawlURL=https://nevelingreply.de/competence&searchString=Dienstleister
 // DOCUMENTATION = https://github.com/Scrapingbot/crawler
 // API Documentation = https:/www.scraping-bot.io/web-scraping-documentation/
-import { server } from '../../utils/AppConfig.ts'
+import { NextApiRequest, NextApiResponse } from 'next'
 
-export default async (req, res) => {
-  const { crawlURL, depthInfo, searchString } = req.query
+import { server } from '../../utils/AppConfig'
+import {
+  weAreDoneHere,
+  weGiveUpHere,
+  weHaveAnError,
+} from '../../utils/TextForPagesAPI'
+
+let stillScraping = true
+let errorMessage = false
+const sleepingtime = (ms: number | undefined) =>
+  new Promise((resolve) => setTimeout(resolve, ms))
+
+// curl -Nv localhost:3000/api/see
+const handler = async (req: NextApiRequest, res: NextApiResponse) => {
+  const { depthInfo, crawlURL, searchString } = req.query as any
+  const depthInformation = parseInt(depthInfo as string, 10)
 
   /* eslint-disable global-require */
-  const request = require('request')
+  const fs = require('fs')
+  const { URL } = require('url')
   const util = require('util')
+
+  const request = require('request')
+
   const rp = util.promisify(request)
   const sleep = util.promisify(setTimeout)
   const cheerio = require('cheerio')
-  const { URL } = require('url')
-  const fs = require('fs')
+
   /* eslint-enable global-require */
 
-  const seenLinks = {}
+  const seenLinks: any = {}
   let rootNode = {}
-  let currentNode = {}
-  const linksQueue = []
-  const printList = []
-  const scrapedDetails = []
+  let currentNode: any = {}
+  const linksQueue: any[] = []
+  const printList: string[] = []
+  const scrapedDetails: {
+    depth: any
+    searchString: any
+    url: any
+    fullbody?: any
+  }[] = []
   let previousDepth = 0
   let maxCrawlingDepth = 1 // default is 5
 
   // eslint-disable-next-line no-unused-vars
-  const options = null
-  let mainDomain = null
-  let mainParsedUrl = null
+  let mainDomain: null = null
+  let mainParsedUrl: { hostname: null; protocol: string }
 
   class CreateLink {
-    constructor(linkURL, depth, parent) {
+    url: any
+
+    depth: number
+
+    parent: null
+
+    children: never[]
+
+    constructor(linkURL: any, depth: number, parent: null) {
       this.url = linkURL
       this.depth = depth
       this.parent = parent
@@ -51,12 +80,10 @@ export default async (req, res) => {
   const scrapedData = () => {
     return JSON.stringify(
       {
-        see_Static_Json_File_on_Server_at:
-          'https://crawl-and-scrape.vercel.app/scraped.json',
         crawlURL,
-        depthInfo,
+        depthInformation,
         searchString,
-        SeverFile: 'https://crawl-and-scrape.vercel.app/scraped.json',
+        SeverFile: `${server}/scraped.json`,
         printList,
         scrapedDetails,
       },
@@ -93,16 +120,17 @@ export default async (req, res) => {
   // second level pages be careful with this on a huge website it will represent
   // tons of pages to scrape
   // it is recommended to limit to 5 levels
-  // eslint-disable-next-line no-use-before-define
-  crawlBFS(crawlURL, depthInfo)
+  // eslint-disable-next-line @typescript-eslint/no-use-before-define
+  crawlBFS(crawlURL, depthInformation)
 
   // eslint-disable-next-line
-  async function crawlBFS(startURL, maxDepth = 5) {
+async function crawlBFS(startURL: string | string[] | undefined, maxDepth: number) {
     try {
       mainParsedUrl = new URL(startURL)
     } catch (e) {
       // eslint-disable-next-line no-console
       console.log('URL is not valid', e)
+      errorMessage = true
       return
     }
 
@@ -112,23 +140,22 @@ export default async (req, res) => {
     const startLinkObj = new CreateLink(startURL, 0, null)
 
     // eslint-disable-next-line
-    rootNode = currentNode = startLinkObj
-    // eslint-disable-next-line no-use-before-define
+  rootNode = currentNode = startLinkObj
+    // eslint-disable-next-line @typescript-eslint/no-use-before-define
     addToLinkQueue(currentNode)
-    // eslint-disable-next-line no-use-before-define
+    // eslint-disable-next-line @typescript-eslint/no-use-before-define
     await findLinks(currentNode)
   }
 
   //
-  async function crawl(linkObj) {
+  async function crawl(linkObj: any) {
     // Add logs here if needed!
-    // console.log(`Checking URL: ${options.url}`);
-    // eslint-disable-next-line no-use-before-define
+    // eslint-disable-next-line @typescript-eslint/no-use-before-define
     await findLinks(linkObj)
   }
 
   // The goal is to get the HTML and look for the links inside the page.
-  async function findLinks(linkObj) {
+  async function findLinks(linkObj: any) {
     // lets set the url we want to scrape
     requestOptions.json.url = linkObj.url
     // eslint-disable-next-line no-console
@@ -142,6 +169,7 @@ export default async (req, res) => {
         if (response.statusCode === 401 || response.statusCode === 405) {
           // eslint-disable-next-line no-console
           console.log('autentication failed check your credentials')
+          errorMessage = true
         } else {
           // eslint-disable-next-line no-console
           console.log(
@@ -157,6 +185,7 @@ export default async (req, res) => {
         console.log(
           `This URL probably has a 301 or 302 status code (page redirect). The URL is: ${response.statusCode}`,
         )
+        errorMessage = true
       } else {
         // catch potential success
         // eslint-disable-next-line no-console
@@ -167,22 +196,22 @@ export default async (req, res) => {
       const links = $('body')
         .find('a')
         // eslint-disable-next-line
-        .filter(function (i, el) {
-          return $(this).attr('href') != null
+      .filter( (i: { attr: (arg0: string) => null }, _el: any) => {
+          return i.attr('href') != null
         })
         // eslint-disable-next-line no-unused-vars, func-names
-        .map(function (i, x) {
-          return $(this).attr('href')
+        .map((i: { attr: (arg0: string) => any }, _x: any) => {
+          return i.attr('href')
         })
 
       if (links.length > 0) {
         // eslint-disable-next-line array-callback-return, consistent-return
-        links.map((i, x) => {
-          // eslint-disable-next-line no-use-before-define
+        links.map((_i: any, x: string) => {
+          // eslint-disable-next-line @typescript-eslint/no-use-before-define
           const reqLink = checkDomain(x)
           if (reqLink) {
             // eslint-disable-next-line
-              const checkPDF = reqLink.substr(reqLink.lastIndexOf('.pdf') + 1)           
+            const checkPDF = reqLink.substr(reqLink.lastIndexOf('.pdf') + 1)           
             // exclude pdf files AND
             // make sure reqLink is NOT EQUAL TO the linkObj.url
             if (reqLink !== linkObj.url && checkPDF !== 'pdf') {
@@ -192,7 +221,7 @@ export default async (req, res) => {
                 linkObj.depth + 1,
                 linkObj,
               )
-              // eslint-disable-next-line no-use-before-define
+              // eslint-disable-next-line @typescript-eslint/no-use-before-define
               return addToLinkQueue(newLinkObj)
             }
           }
@@ -224,7 +253,7 @@ export default async (req, res) => {
       // eslint-disable-next-line no-param-reassign
       linkObj.fullbody = fullbody
 
-      // eslint-disable-next-line no-use-before-define
+      // eslint-disable-next-line @typescript-eslint/no-use-before-define
       const nextLinkObj = getNextInQueue()
       if (nextLinkObj && nextLinkObj.depth <= maxCrawlingDepth) {
         // random sleep
@@ -234,7 +263,7 @@ export default async (req, res) => {
         // website you want to crawl
         // time is in milliseconds here
         const minimumWaitTime = 500
-        // half a second these values are very low on a real worl example you
+        // half a second these values are very low on a real world example you
         // should use at least 30000 (30 seconds between each call)
         const maximumWaitTime = 4000 // max four seconds
         const waitTime = Math.round(
@@ -246,9 +275,9 @@ export default async (req, res) => {
         // next url scraping
         await crawl(nextLinkObj)
       } else {
-        // eslint-disable-next-line no-use-before-define
+        // eslint-disable-next-line @typescript-eslint/no-use-before-define
         setRootNode()
-        // eslint-disable-next-line no-use-before-define
+        // eslint-disable-next-line @typescript-eslint/no-use-before-define
         printTree()
 
         const printToJSON = () => {
@@ -258,25 +287,25 @@ export default async (req, res) => {
             'public/scraped.json',
             scrapedData(),
             // eslint-disable-next-line func-names
-            function (err) {
+            function (err: any) {
               // eslint-disable-next-line no-console
               if (err) return console.log(err)
               // eslint-disable-next-line no-console
-              console.log(
-                `\n\n\n\nThis Result is saved on the Sever inside of a separate json-file named: scraped.json. \nYou may request that JSON-data at: https://crawl-and-scrape.vercel.app/scraped.json. \nThe json-File you currently look at has the following URL:\n${server}/api/${depthInfo}/?crawlURL=${crawlURL}/&searchString=${searchString}\n\n\n`,
-              )
               return ' '
             },
           )
 
-          // Create Write DATA into this JSON file
-          res.end(scrapedData())
+          // IN THE PAST WE created the Write DATA into this JSON file at this point like so:
+          // res.end(scrapedData())  //
+          //  in the future we will instead simply call  weAreDoneHere()
         }
         printToJSON()
+        stillScraping = false
       }
     } catch (err) {
       // eslint-disable-next-line no-console
       console.log('Something Went Wrong...', err)
+      errorMessage = true
     }
   }
 
@@ -289,7 +318,7 @@ export default async (req, res) => {
   }
 
   function printTree() {
-    // eslint-disable-next-line no-use-before-define
+    // eslint-disable-next-line @typescript-eslint/no-use-before-define
     addToPrintDFS(rootNode)
     // eslint-disable-next-line no-console
     console.log(
@@ -299,7 +328,7 @@ export default async (req, res) => {
     )
   }
 
-  function addToPrintDFS(node) {
+  function addToPrintDFS(node: any) {
     const spaces = Array(node.depth * 3).join('-')
     printList.push(`${spaces + node.url} `)
     if (node.checkIfStringIsPresent) {
@@ -319,7 +348,7 @@ export default async (req, res) => {
     // scrapedDetails.push(node.depth, node.checkIfStringIsPresent, node.url)
     if (node.children) {
       // eslint-disable-next-line
-      node.children.map((i, x) => {
+    node.children.map((i: any, _x: any) => {
         // eslint-disable-next-line no-lone-blocks
         {
           addToPrintDFS(i)
@@ -329,7 +358,7 @@ export default async (req, res) => {
   }
 
   // Check if the domain belongs to the site being checked
-  function checkDomain(linkURL) {
+  function checkDomain(linkURL: string) {
     let parsedUrl
     let fullUrl = true
     try {
@@ -364,14 +393,15 @@ export default async (req, res) => {
     return false // stefano check this (return and '')
   }
 
-  function addToLinkQueue(linkobj) {
-    // eslint-disable-next-line no-use-before-define
+  function addToLinkQueue(linkobj: any) {
+    // eslint-disable-next-line @typescript-eslint/no-use-before-define
     if (!linkInSeenListExists(linkobj)) {
       if (linkobj.parent != null) {
         linkobj.parent.children.push(linkobj)
       }
       linksQueue.push(linkobj)
-      // eslint-disable-next-line no-use-before-define
+
+      // eslint-disable-next-line @typescript-eslint/no-use-before-define
       addToSeen(linkobj)
     }
   }
@@ -387,14 +417,64 @@ export default async (req, res) => {
   }
 
   // Adds links we've visited to the seenList
-  function addToSeen(linkObj) {
+  function addToSeen(linkObj: { url: string | number }) {
     // eslint-disable-next-line no-console
     // console.log('linkObj: ', linkObj)
     seenLinks[linkObj.url] = linkObj
   }
 
   // Returns whether the link has been seen.
-  function linkInSeenListExists(linkObj) {
+  function linkInSeenListExists(linkObj: { url: string | number }) {
     return seenLinks[linkObj.url] != null
   }
+
+  // Stream a response to the endpoint inbetween.
+  // This way we prevent VERCEL.com from returning a 504 Gateway error
+  res.setHeader('Access-Control-Allow-Origin', '*')
+  res.setHeader('Cache-Control', 'no-cache, no-transform')
+  res.setHeader('X-Accel-Buffering', 'no')
+
+  res.setHeader('Content-Type', 'text/event-stream;charset=utf-8')
+
+  res.write(`Please expect this Crawling to take approx. 60 seconds\n\n`)
+
+  // eslint-disable-next-line no-plusplus
+  for (let i = 0; i < 25; i++) {
+    if (errorMessage === true) {
+      weHaveAnError(res)
+      stillScraping = false
+      break
+    }
+
+    // never scrawl for longer than 95 seconds
+    if (i > 19) {
+      // we will res.end error-message with weGiveUpHere()
+      weGiveUpHere(res)
+      stillScraping = false
+      // res.set('Connection', 'close')
+      // jump out of the for loop
+      break
+    }
+    if (stillScraping === true) {
+      // res.write(JSON.stringify({ dummy2: 'data2' }))
+      res.write(`Crawling since  ${i * 5} seconds\n\n`)
+      // eslint-disable-next-line no-await-in-loop
+      await sleepingtime(5000)
+    } else {
+      // we will res.end success-message with weAreDoneHere()
+      weAreDoneHere(
+        res,
+        server,
+        depthInformation,
+        crawlURL,
+        searchString,
+        scrapedData(),
+      )
+      stillScraping = false
+      // res.set('Connection', 'close')
+      break // jump out of the for loop
+    }
+  }
 }
+
+export default handler
