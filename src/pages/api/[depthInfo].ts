@@ -445,7 +445,7 @@ async function crawlBFS(startURL: string | string[] | undefined, maxDepth: numbe
   res.write(`Please expect this Crawling to take approx. 60 seconds\n\n`)
 
   // eslint-disable-next-line no-plusplus
-  for (let i = 0; i < 25; i++) {
+  for (let i = 0; i < 97; i++) {
     if (errorMessage === true) {
       weHaveAnError(res)
       stillScraping = false
@@ -453,7 +453,7 @@ async function crawlBFS(startURL: string | string[] | undefined, maxDepth: numbe
     }
 
     // never scrawl for longer than 95 seconds
-    if (i > 19) {
+    if (i > 95) {
       // we will res.end error-message with weGiveUpHere()
       weGiveUpHere(res)
       stillScraping = false
@@ -463,9 +463,9 @@ async function crawlBFS(startURL: string | string[] | undefined, maxDepth: numbe
     }
     if (stillScraping === true) {
       // res.write(JSON.stringify({ dummy2: 'data2' }))
-      res.write(`Crawling since  ${i * 5} seconds\n\n`)
+      res.write(`Crawling since  ${i * 1} seconds, pls. wait...\n\n`)
       // eslint-disable-next-line no-await-in-loop
-      await sleepingtime(5000)
+      await sleepingtime(1000)
     } else {
       // we will res.end success-message with weAreDoneHere()
       weAreDoneHere(
