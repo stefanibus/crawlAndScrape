@@ -193,20 +193,24 @@ async function crawlBFS(startURL: string | string[] | undefined, maxDepth: numbe
       }
       // look for the links inside in the whole content of the page
       const $ = cheerio.load(response.body)
+
       const links = $('body')
         .find('a')
         // eslint-disable-next-line
  
         // eslint-disable-next-line
-        .filter(function (i, el) {
+        .filter(function (_i: any, _el: any) {
+          // eslint-disable-next-line
           return $(this).attr('href') != null
         })
         // eslint-disable-next-line no-unused-vars, func-names
-        .map(function (i, x) {
+        .map(function (_i: any, _x: any) {
           return $(this).attr('href')
         })
 
       if (links.length > 0) {
+        // console.log('links : here: ', links)
+
         // eslint-disable-next-line array-callback-return, consistent-return
         links.map((_i: any, x: string) => {
           // eslint-disable-next-line @typescript-eslint/no-use-before-define
