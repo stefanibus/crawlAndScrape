@@ -1,6 +1,11 @@
 {
   "name": "next-js-boilerplate",
   "version": "1.0.0",
+  "description": "Crawling and scraping service",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
