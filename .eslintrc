@@ -1,6 +1,11 @@
 {
   // Configuration for JavaScript files
-  "extends": ["airbnb-base", "plugin:prettier/recommended"],
+  "extends": [
+    "airbnb-base",
+    "plugin:prettier/recommended",
+    "eslint:recommended",
+    "next"
+  ],
   "rules": {
     "prettier/prettier": [
       "error",
