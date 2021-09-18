@@ -77,7 +77,7 @@ export const weAreOnVercel = (res: NextApiResponse<any>) => {
       \n
       ###################################################
       \n\n\n
-      We interrupted the crawling-process . 
+      We interrupted the crawling-process.
       \n
       Vercel generally disallows any scraping-service to be run on their server.  
       \n 
@@ -91,12 +91,13 @@ export const weAreOnVercel = (res: NextApiResponse<any>) => {
       \n 
       We recommend you run this sevice on your local machine.
       \n  
-      For more, please see: 
+      For more information, please see: 
       \n  
       https://github.com/stefanibus/crawlAndScrape 
       \n 
       ####################
       \n
+      - https://vercel.com/docs/error/application/FUNCTION_INVOCATION_TIMEOUT
       `,
   )
 }

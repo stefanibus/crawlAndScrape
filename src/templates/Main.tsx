@@ -39,9 +39,10 @@ const Main = (props: IMainProps) => (
             </li>
             <li className="mr-6">
               <a
-                className="text-gray-700 border-none hover:text-gray-900"
+                className="external text-gray-700 border-none hover:text-gray-900"
                 href="https://github.com/stefanibus/crawlAndScrape/"
                 rel="noreferrer"
+                target="_blank"
               >
                 GitHub
               </a>
