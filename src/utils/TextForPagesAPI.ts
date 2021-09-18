@@ -27,11 +27,11 @@ export const weAreDoneHere = (
     \n
     separate json-file named: scraped.json. (see Link above)
     \n\n
-    The json-File got created because you requested the below URL: 
-    \n
-    (it is identical to your current Browser Adress Bar) 
+    A json-File got created because you requested this URL: 
     \n\n
     ${server}/api/${depthInfo}/?crawlURL=${crawlURL}/&searchString=${searchString}
+    \n
+    Also see identical URL in your Browser Adress Bar (current Tab) 
     \n\n\n    
     `,
   )

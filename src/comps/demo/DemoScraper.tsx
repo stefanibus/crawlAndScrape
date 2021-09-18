@@ -98,7 +98,7 @@ export const DemoScraper = ({
                       <span className="tooltip rounded shadow-lg p-1 bg-gray-100 text-red-500  -mt-28 sm:-mt-20  -ml-20 ">
                         Attention: The scraper will start to run!
                         <br />
-                        Please wait approx. 60 seconds
+                        Wait for up to 60 seconds
                         <br />
                         until the result will show up!!
                       </span>
@@ -142,7 +142,7 @@ export const DemoScraper = ({
           </div>
         </dl>
       </div>{' '}
-      <div className="overflow-hidden transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-105  origin-top text-center">
+      <div className="overflow-hidden text-center transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-105  origin-top">
         <pre className="scrollbar-none overflow-x-auto p-6 text-sm leading-snug language-html text-white bg-gradient-to-r       from-customblue-100 to-customblue-200 bg-opacity-75 whitespace-pre-wrap   break-words ">
           <code className="language-html">
             <span className="token tag">
