@@ -68,6 +68,39 @@ export const weGiveUpHere = (res: NextApiResponse<any>) => {
   )
 }
 
+export const weAreOnVercel = (res: NextApiResponse<any>) => {
+  return res.end(
+    `\n
+      ###################################################
+      \n
+      Result: We are on a Vercel.com Server.
+      \n
+      ###################################################
+      \n\n\n
+      We interrupted the crawling-process . 
+      \n
+      Vercel generally disallows any scraping-service to be run on their server.  
+      \n 
+      Using Serverless Functions for scraping is against their Fair Use Policy 
+      \n
+      and therefore, 
+      \n
+      We cannot display the desired result on this server.  
+      \n
+      Their maximum time a Serverless Function can run is at 60 seconds.
+      \n 
+      We recommend you run this sevice on your local machine.
+      \n  
+      For more, please see: 
+      \n  
+      https://github.com/stefanibus/crawlAndScrape 
+      \n 
+      ####################
+      \n
+      `,
+  )
+}
+
 export const weHaveAnError = (res: NextApiResponse<any>) => {
   return res.end(
     `\n

@@ -2,11 +2,13 @@
 // this page is requested as follows:  https://thisdomain.com/api/2/?crawlURL=https://nevelingreply.de/competence&searchString=Dienstleister
 // DOCUMENTATION = https://github.com/Scrapingbot/crawler
 // API Documentation = https:/www.scraping-bot.io/web-scraping-documentation/
+
 import { NextApiRequest, NextApiResponse } from 'next'
 
 import { server } from '../../utils/AppConfig'
 import {
   weAreDoneHere,
+  weAreOnVercel,
   weGiveUpHere,
   weHaveAnError,
 } from '../../utils/TextForPagesAPI'
@@ -445,19 +447,24 @@ async function crawlBFS(startURL: string | string[] | undefined, maxDepth: numbe
   res.write(`Please expect this Crawling to take approx. 60 seconds\n\n`)
 
   // eslint-disable-next-line no-plusplus
-  for (let i = 0; i < 97; i++) {
+  for (let i = 0; i < 100; i++) {
+    // If we are on vercel.app, then skip the process, as it is agains their policy to scrape data
+    if (i > 3 && server.includes('vercel.app')) {
+      weAreOnVercel(res)
+      stillScraping = false
+      // jump out of the for loop
+      break
+    }
     if (errorMessage === true) {
       weHaveAnError(res)
       stillScraping = false
       break
     }
-
     // never scrawl for longer than 95 seconds
     if (i > 95) {
       // we will res.end error-message with weGiveUpHere()
       weGiveUpHere(res)
       stillScraping = false
-      // res.set('Connection', 'close')
       // jump out of the for loop
       break
     }
@@ -477,7 +484,6 @@ async function crawlBFS(startURL: string | string[] | undefined, maxDepth: numbe
         scrapedData(),
       )
       stillScraping = false
-      // res.set('Connection', 'close')
       break // jump out of the for loop
     }
   }
