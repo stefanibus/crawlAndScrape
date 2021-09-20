@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Comment } from '../comps/Comment/Comment'
+import { Comment } from '../comps/Comment'
 import { DemoScraper } from '../comps/demo/DemoScraper'
 import { Divider } from '../comps/divider/Divider'
 import { Meta } from '../layout/Meta'
