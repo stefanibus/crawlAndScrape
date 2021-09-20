@@ -93,11 +93,18 @@ export const Navigation = () => {
                     <div>
                       <Menu.Button className="bg-gray-800 flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
                         <span className="sr-only">Open user menu</span>
-                        <img
-                          className="h-8 w-8 rounded-full"
-                          src="../assets/images/photo.avif"
-                          alt=""
-                        />
+                        <picture>
+                          <source
+                            srcSet="../assets/images/photo.avif"
+                            type="image/avif"
+                          />
+                          <img
+                            loading="lazy"
+                            className="h-8 w-8 rounded-full"
+                            src="../assets/images/photo.jpg"
+                            alt="Pic-of-a-User"
+                          />
+                        </picture>
                       </Menu.Button>
                     </div>
                     <Transition
