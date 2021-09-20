@@ -37,15 +37,25 @@ export const Navigation = () => {
                     <img
                       className="block lg:hidden h-8 w-auto"
                       src="../assets/images/workflow-mark-indigo-500.svg"
-                      alt="Workflow"
+                      alt="Logo without Workflow-Text"
                     />
                     <img
-                      className="hidden lg:block h-8 w-auto"
+                      className="hidden h-8 w-auto "
                       src="../assets/images/workflow-logo-indigo-500-mark-white-text.svg"
-                      alt="Workflow"
+                      alt="Logo and Workflow-Text "
                     />
 
-                    <span className="font-semibold tracking-tight text-white pl-1 mb-1 text-logo hidden  lg:inline-block">
+                    <svg
+                      className="fill-current h-8 w-8 mr-2 text-white hidden   lg:block"
+                      width="54"
+                      height="54"
+                      viewBox="0 0 54 54"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path d="M13.5 22.1c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05zM0 38.3c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05z" />
+                    </svg>
+
+                    <span className="font-semibold tracking-tight text-white pl-1 mb-1 text-logo hidden  md:inline-block">
                       Scraper Service
                     </span>
                   </div>
