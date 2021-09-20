@@ -33,9 +33,9 @@ const Index = () => {
             <div className="aspectRatioIdenticalToAboutHeroImage pb-46%" />
           </div>
           <h1 className="font-bold text-2xl pt-12 pb-6">
-            Search content all across entire domains
-            <br />
-            Clone files matching your searchterm
+            Crawler and Scraper for nevelingreply.de on NextJS using an
+            API-service from scraping-bot.io: Search content across entire
+            domains and clone files matching your searchterm
           </h1>
           <p>
             <span role="img" aria-label="rocket">

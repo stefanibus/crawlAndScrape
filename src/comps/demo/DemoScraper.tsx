@@ -143,7 +143,7 @@ export const DemoScraper = ({
         </dl>
       </div>{' '}
       <div className="overflow-hidden text-center transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-105  origin-top">
-        <pre className="scrollbar-none overflow-x-auto p-6 text-sm leading-relaxed language-html text-white bg-gradient-to-r from-customblue-300 to-customblue-400 bg-opacity-75 whitespace-pre-wrap   break-words ">
+        <pre className="scrollbar-none overflow-x-auto p-6 text-sm sm:leading-relaxed leading-loose  language-html text-white bg-gradient-to-r from-customblue-300 to-customblue-400 bg-opacity-75 whitespace-pre-wrap   break-words  sm:h-40 ">
           <code className="language-html">
             <span className="token tag">
               <span className="token tag">
