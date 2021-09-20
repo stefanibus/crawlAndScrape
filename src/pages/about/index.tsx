@@ -14,24 +14,18 @@ const About = () => {
           alt="Nextjs starter banner"
         />
       </div>
-      <h1 className="font-bold text-2xl">About...</h1>
+      <h1 className="font-bold text-2xl  pt-12 pb-6">About...</h1>
       <p>
         <span role="img" aria-label="rocket">
           🚀
         </span>
-        This is a Web scraping service to scrape and extract data from any
-        webpage without getting blocked! The three examples below showcase the
-        different CrawlingDepth the user can apply, as well as the way the
-        &quot;Domain and Path&quot; can be choosen to start the scrawl.
+        In case of any questions, feel free to contact me.This Web scraping
+        service will extract data from any webpage you choose without getting
+        blocked. Choose a searchstring and save pages matching your searchterm
+        to the server.
         <span role="img" aria-label="zap">
           ⚡️
-        </span>{' '}
-        <br />
-        <br />
-        The user may apply a searchstring: In that case, all pages containing
-        the relevant string will be found, copied and saved on our server. PS:
-        The maximum-crawling-depth of this bot is limited to a depth of 5
-        levels.
+        </span>
       </p>
     </Main>
   )

@@ -1,24 +1,27 @@
-html {
-  overflow: -moz-scrollbars-vertical; 
-  overflow-y: scroll;
-}
+
 
 @tailwind base;
 @tailwind components;
 
+html {
+  overflow: -moz-scrollbars-vertical; 
+  overflow-y: scroll;   
+}
+
 a {
-  @apply text-blue-700;
+  @apply text-blue-700 border-b border-transparent;
 }
 
 a:hover {
-  @apply border-b-2 border-blue-700;
+  @apply text-customblue-400   border-b border-customred-100  border-opacity-75;
 }
-
+/* 
 a.external[target="_blank"]::after {
-  content: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAQElEQVR42qXKwQkAIAxDUUdxtO6/RBQkQZvSi8I/pL4BoGw/XPkh4XigPmsUgh0626AjRsgxHTkUThsG2T/sIlzdTsp52kSS1wAAAABJRU5ErkJggg==); 
-  margin: -8px 0px 0px 3px;
   position: absolute;
-}
+  opacity: .5;
+  margin: -8px 0px 0px 8px;
+  content: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAQElEQVR42qXKwQkAIAxDUUdxtO6/RBQkQZvSi8I/pL4BoGw/XPkh4XigPmsUgh0626AjRsgxHTkUThsG2T/sIlzdTsp52kSS1wAAAABJRU5ErkJggg==); 
+} */
 
 @tailwind components;
 
@@ -41,3 +44,8 @@ a.external[target="_blank"]::after {
 }
 
 @tailwind utilities;
+
+
+/* .shiftBy {
+  transform:  translate(0px, -2.50px)
+} */

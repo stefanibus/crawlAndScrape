@@ -143,23 +143,39 @@ export const DemoScraper = ({
         </dl>
       </div>{' '}
       <div className="overflow-hidden text-center transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-105  origin-top">
-        <pre className="scrollbar-none overflow-x-auto p-6 text-sm leading-snug language-html text-white bg-gradient-to-r       from-customblue-100 to-customblue-200 bg-opacity-75 whitespace-pre-wrap   break-words ">
+        <pre className="scrollbar-none overflow-x-auto p-6 text-sm leading-relaxed language-html text-white bg-gradient-to-r from-customblue-300 to-customblue-400 bg-opacity-75 whitespace-pre-wrap   break-words ">
           <code className="language-html">
             <span className="token tag">
               <span className="token tag">
                 <span className="domain and path">
                   {server}/api/
-                  <span className="ScrawlingDepth font-bold text-code-100">
-                    {depthToCrawl}/
-                  </span>
-                  <span className="crawlURL font-bold text-yellow-400">
+                  <div className="has-tooltip  inline-block">
+                    <span className="hidden sm:block  tooltip absolute bottom-2 right-12  text-customred-100 bg-white rounded-lg px-3">
+                      CrawlingDepth
+                    </span>
+                    <a className=" ScrawlingDepth font-bold  text-code-100  p-1  hover:bg-white rounded-lg hover:border-white  hover:bg-opacity-50 ">
+                      {depthToCrawl}
+                    </a>
+                    /
+                  </div>
+                  <div className="has-tooltip  inline-block">
                     ?crawlURL=
-                  </span>
-                  {pointToStartFullURL}
-                  <span className="crawlURL font-bold text-yellow-400">
-                    &searchString=
-                  </span>
-                  {`${termToSearch}`}
+                    <span className="hidden sm:block  tooltip absolute bottom-2 right-12  text-customred-100 bg-white rounded-lg px-3  ">
+                      CrawlURL
+                    </span>
+                    <a className=" crawlURL font-bold text-yellow-400   p-1  hover:bg-white rounded-lg hover:border-white hover:bg-opacity-50 ">
+                      {pointToStartFullURL}
+                    </a>
+                  </div>
+                  <div className="has-tooltip  inline-block">
+                    ?searchString=
+                    <span className="hidden sm:block  tooltip absolute bottom-2 right-12  text-customred-100 bg-white rounded-lg px-3">
+                      searchString
+                    </span>
+                    <a className=" searchString font-bold text-yellow-400   p-1  hover:bg-white rounded-lg hover:border-white hover:bg-opacity-50   ">
+                      {`${termToSearch}`}
+                    </a>
+                  </div>
                 </span>
               </span>
             </span>

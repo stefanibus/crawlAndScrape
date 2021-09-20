@@ -1,7 +1,6 @@
-import { ReactNode } from 'react'
+import React, { ReactNode } from 'react'
 
-import Link from 'next/link'
-
+import { Navigation } from '../comps/Nav'
 import { AppConfig } from '../utils/AppConfig'
 
 type IMainProps = {
@@ -21,36 +20,25 @@ const Main = (props: IMainProps) => (
           </div>
           <div className="text-xl">{AppConfig.description}</div>
         </div>
-        <div>
-          <ul className="flex flex-wrap text-xl">
-            <li className="mr-6">
-              <Link href="/">
-                <a className="text-gray-700 border-none hover:text-gray-900">
-                  Home
+        <div className="pt-10">
+          <Navigation />
+          <nav className="flex items-center justify-between flex-wrap bg-customblue-150 p-6">
+            <div className="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
+              <div className="text-sm lg:flex-grow invisible " />
+              <div className="grid justify-items-center">
+                <a
+                  href="https://github.com/stefanibus/crawlAndScrape/"
+                  rel="noreferrer"
+                  target="_blank"
+                  className="  inline-block text-sm px-4 py-2 leading-none border rounded text-customblue-50 border-white hover:border-transparent hover:text-customblue-400 hover:bg-white mt-4 lg:mt-0"
+                >
+                  GitHub Project
                 </a>
-              </Link>
-            </li>
-            <li className="mr-6">
-              <Link href="/about/">
-                <a className="text-gray-700 border-none hover:text-gray-900">
-                  About
-                </a>
-              </Link>
-            </li>
-            <li className="mr-6">
-              <a
-                className="external text-gray-700 border-none hover:text-gray-900"
-                href="https://github.com/stefanibus/crawlAndScrape/"
-                rel="noreferrer"
-                target="_blank"
-              >
-                GitHub
-              </a>
-            </li>
-          </ul>
+              </div>
+            </div>
+          </nav>
         </div>
       </div>
-
       <div className="py-5 text-xl content">{props.children}</div>
 
       <div className="border-t border-gray-300 text-center py-8 text-sm">

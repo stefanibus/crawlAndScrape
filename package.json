@@ -19,6 +19,7 @@
     "prepare": "husky install"
   },
   "dependencies": {
+    "@headlessui/react": "^1.4.1",
     "@heroicons/react": "^1.0.4",
     "cheerio": "^1.0.0-rc.10",
     "husky": "^7.0.2",

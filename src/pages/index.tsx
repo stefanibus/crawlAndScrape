@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Comment } from '../comps/comment/Comment'
+import { Comment } from '../comps/Comment/Comment'
 import { DemoScraper } from '../comps/demo/DemoScraper'
 import { Divider } from '../comps/divider/Divider'
 import { Meta } from '../layout/Meta'
@@ -32,28 +32,43 @@ const Index = () => {
           <div className="overflow-hidden bg-cover bg-hero-about relative">
             <div className="aspectRatioIdenticalToAboutHeroImage pb-46%" />
           </div>
-          <h1 className="font-bold text-2xl">
-            All Files matching the searchterm you choose will be copied to the
-            server.
+          <h1 className="font-bold text-2xl pt-12 pb-6">
+            Search content all across entire domains
+            <br />
+            Clone files matching your searchterm
           </h1>
           <p>
             <span role="img" aria-label="rocket">
               🚀
             </span>
-            This is a Web scraping service to scrape and extract data from any
-            webpage without getting blocked! The three examples below showcase
-            the different CrawlingDepth the user can apply, as well as the way
-            the &quot;Domain and Path&quot; can be choosen to start the scrawl.
+            This is a Web scraping service. It can be used to extract data from
+            any webpage without getting blocked. A documentation can be found
+            below. Three examples can be found below. They showcase the way
+            params can be entered before the scrawling is requested. Five
+            different CrawlingDepth's are available.
+            <br />
+            <br />
+            Please find showcases below.
             <span role="img" aria-label="zap">
               ⚡️
-            </span>{' '}
+            </span>
             <br />
             <br />
             The user may apply a searchstring: In that case, all pages
             containing the relevant string will be found, copied and saved on
             our server. PS: The maximum-crawling-depth of this bot is limited to
             a depth of 5 levels.
+            <br />
           </p>
+
+          <h1 className="pt-12 font-bold text-2xl">First Demo</h1>
+          <p>
+            The first Example will search all across the domain:
+            nevelingreply.de. It will scrape all pages containing the term
+            &quot;Dienstleister&quot; achross all pages. Matching pages will be
+            cloned to our server.
+          </p>
+
           <DemoScraper
             pointToStart="nevelingreply.de/competence"
             pointToStartFullURL="https://nevelingreply.de/competence"
@@ -62,11 +77,13 @@ const Index = () => {
             staticReference="scraped-neverling.json"
           />
           <Divider />
-          <p className="pt-12">
-            The second Example will search all across the domain:
-            scraping-bot.io. and scrape all pages containing the term &quot;my
-            paragraph of&quot;. All pages containing that searchstring-term will
-            be stored to our server.
+
+          <h1 className="pt-12 font-bold text-2xl">Second Demo</h1>
+          <p>
+            The second Example searches all across the domain: scraping-bot.io.
+            and scrapes all pages containing the term &quot;my paragraph
+            of&quot;. All pages containing that searchstring-term will be stored
+            to our server.
           </p>
           <DemoScraper
             pointToStart="scraping-bot.io/crawler/second-page.html"
@@ -76,11 +93,12 @@ const Index = () => {
             staticReference="scraped-scraping-bot.json"
           />
           <Divider />
-          <p className="pt-12">
-            The third Example will search all across the domain:
-            triplesensereply.de and scrape all pages containing the term
-            &quot;Frontend Developer&quot;. All pages containing that
-            searchstring-term will be stored to our server.
+          <h1 className="pt-12 font-bold text-2xl">Third Demo</h1>
+          <p>
+            The third Example scrapes across: triplesensereply.de to find all
+            pages containing the term &quot;Frontend Developer&quot;. All pages
+            containing that searchstring-term will be found and then stored to
+            our server.
           </p>
           <DemoScraper
             pointToStart="triplesensereply.de/agentur"
