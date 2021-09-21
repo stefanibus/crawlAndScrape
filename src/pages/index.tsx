@@ -1,5 +1,8 @@
 import React from 'react'
 
+import CSS from 'csstype'
+import { useRouter } from 'next/router'
+
 import { Comment } from '../comps/Comment'
 import { DemoScraper } from '../comps/demo/DemoScraper'
 import { Divider } from '../comps/divider/Divider'
@@ -7,6 +10,7 @@ import { Meta } from '../layout/Meta'
 import { Main } from '../templates/Main'
 
 const Index = () => {
+  const router = useRouter()
   // Tracking Pixel
   const trackingPixel = () => {
     return (
@@ -18,243 +22,159 @@ const Index = () => {
     )
   }
 
+  const startPageHeroBackground: CSS.Properties = {
+    // position: 'absolute',
+    position: 'absolute',
+    backgroundColor: '#05177e',
+    width: '100%',
+    height: '242px',
+    bottom: '0',
+    zIndex: -1,
+  }
+
+  const heroImage = {
+    clipPath: 'inset(0% 1% 0% 0%)',
+  }
+
   return (
     <>
       <div>
         <Main
           meta={
             <Meta
-              title="Next.js Crawler and Scraper for nevelingreply.de"
+              title="Next.js Crawler and Scraper"
               description="Next Crawler and Scraper"
             />
           }
         >
-          <div className="overflow-hidden bg-cover bg-hero-about relative">
-            <div className="aspectRatioIdenticalToAboutHeroImage pb-46%" />
-          </div>
-          <h1 className="font-bold text-2xl pt-12 pb-6">
-            Crawler and Scraper for nevelingreply.de on NextJS using an
-            API-service from scraping-bot.io: Search content across entire
-            domains and clone files matching your searchterm
-          </h1>
-          <p>
-            <span role="img" aria-label="rocket">
-              🚀
-            </span>
-            This is a Web scraping service. It can be used to extract data from
-            any webpage without getting blocked. A documentation can be found
-            below. Three examples can be found below. They showcase the way
-            params can be entered before the scrawling is requested. Five
-            different CrawlingDepth's are available.
-            <br />
-            <br />
-            Please find showcases below.
-            <span role="img" aria-label="zap">
-              ⚡️
-            </span>
-            <br />
-            <br />
-            The user may apply a searchstring: In that case, all pages
-            containing the relevant string will be found, copied and saved on
-            our server. PS: The maximum-crawling-depth of this bot is limited to
-            a depth of 5 levels.
-            <br />
-          </p>
+          <div className="mx-auto flex items-center justify-center flex-wrap relative">
+            <div style={startPageHeroBackground}>&nbsp;</div>
+            <img
+              style={heroImage}
+              src={`${router.basePath}/assets/images/scraping-animated_darkblue.gif
+              
+              `}
+              alt="Nextjs starter banner"
+            />
 
-          <h1 className="pt-12 font-bold text-2xl">First Demo</h1>
-          <p>
-            The first Example will search all across the domain:
-            nevelingreply.de. It will scrape all pages containing the term
-            &quot;Dienstleister&quot; achross all pages. Matching pages will be
-            cloned to our server.
-          </p>
-
-          <DemoScraper
-            pointToStart="nevelingreply.de/competence"
-            pointToStartFullURL="https://nevelingreply.de/competence"
-            depthToCrawl={2}
-            termToSearch="Dienstleister"
-            staticReference="scraped-neverling.json"
-          />
-          <Divider />
-
-          <h1 className="pt-12 font-bold text-2xl">Second Demo</h1>
-          <p>
-            The second Example searches all across the domain: scraping-bot.io.
-            and scrapes all pages containing the term &quot;my paragraph
-            of&quot;. All pages containing that searchstring-term will be stored
-            to our server.
-          </p>
-          <DemoScraper
-            pointToStart="scraping-bot.io/crawler/second-page.html"
-            pointToStartFullURL="https://www.scraping-bot.io/crawler/second-page.html"
-            depthToCrawl={5}
-            termToSearch="my paragraph of the second page"
-            staticReference="scraped-scraping-bot.json"
-          />
-          <Divider />
-          <h1 className="pt-12 font-bold text-2xl">Third Demo</h1>
-          <p>
-            The third Example scrapes across: triplesensereply.de to find all
-            pages containing the term &quot;Frontend Developer&quot;. All pages
-            containing that searchstring-term will be found and then stored to
-            our server.
-          </p>
-          <DemoScraper
-            pointToStart="triplesensereply.de/agentur"
-            pointToStartFullURL="https://www.triplesensereply.de/agentur/"
-            depthToCrawl={1}
-            termToSearch="Frontend Developer"
-            staticReference="scraped-triplesensereply.json"
-          />
-          <Comment />
-          <h2 className="font-semibold text-lg">
-            Crawler and Scraper Example for nevelingreply.de on NextJS{' '}
-          </h2>
-          <p>Developer experience first:</p>
-          <ul>
-            <li>
-              <span role="img" aria-label="fire">
-                🔥
-              </span>{' '}
-              <a href="https://nextjs.org" rel="nofollow">
-                Next.js
-              </a>{' '}
-              for Static Site Generator
-            </li>
-            <li>
-              <span role="img" aria-label="art">
-                🎨
-              </span>{' '}
-              Integrate with{' '}
-              <a href="https://tailwindcss.com" rel="nofollow">
-                Tailwind CSS
-              </a>
-            </li>
-            <li>
-              <span role="img" aria-label="nail_care">
-                💅
-              </span>
-              {' PostCSS for processing Tailwind CSS '}
-            </li>
-            <li>
-              <span role="img" aria-label="tada">
-                🎉
-              </span>
-              {' Type checking Typescript'}
-            </li>
-            <li>
-              <span role="img" aria-label="pencil2">
-                ✏️
-              </span>
-              {' Linter with '}
-
-              <a href="https://eslint.org" rel="nofollow">
-                ESLint
-              </a>
-            </li>
-            <li>
-              <span role="img" aria-label="hammer_and_wrench">
-                🛠
-              </span>
-              {' Code Formatter with '}
-
-              <a href="https://prettier.io" rel="nofollow">
-                {' Prettier '}
-              </a>
-            </li>
-            <li>
-              <span role="img" aria-label="fox_face">
-                🦊
-              </span>
-              {' Husky for Git Hooks '}
-            </li>
-            <li>
-              <span role="img" aria-label="no_entry_sign">
-                🚫
-              </span>
-              {' Lint-staged for running linters on Git staged files '}
-            </li>
-            <li>
-              <span role="img" aria-label="no_entry_sign">
-                🗂
-              </span>
-              {
-                ' VSCode configuration: Debug, Settings, Tasks and extension for PostCSS, ESLint, Prettier, TypeScript '
-              }
-            </li>
-            <li>
-              <span role="img" aria-label="robot">
-                🤖
-              </span>
-              {' SEO metadata, JSON-LD and Open Graph tags with Next SEO '}
-            </li>
-            <li>
-              <span role="img" aria-label="robot">
-                ⚙️
-              </span>{' '}
-              <a
-                href="https://www.npmjs.com/package/@next/bundle-analyzer"
-                rel="nofollow"
+            <div className="frameForElementor">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 283.5 19.6"
+                preserveAspectRatio="none"
+                className="elementor"
               >
-                {' Bundler Analyzer '}
-              </a>
-            </li>
-            <li>
-              <span role="img" aria-label="rainbow">
-                🌈
-              </span>
-              {' Include a FREE minimalist theme '}
-            </li>
-            <li>
-              <span role="img" aria-label="hundred">
-                💯
-              </span>
-              {' Maximize lighthouse score '}
-            </li>
-          </ul>
-          <p>Built-in feature from Next.js:</p>
-          <ul>
-            <li>
-              <span role="img" aria-label="coffee">
-                ☕
-              </span>
-              {' Minify HTML & CSS'}
-            </li>
-            <li>
-              <span role="img" aria-label="dash">
-                💨
-              </span>
-              {' Live reload'}
-            </li>
-            <li>
-              <span role="img" aria-label="white_check_mark">
-                ✅
-              </span>
-              {' Cache busting'}
-            </li>
-          </ul>
-          <h2 className="font-semibold text-lg">Our Starter code Philosophy</h2>
-          <ul>
-            <li>Minimal code</li>
-            <li>SEO-friendly</li>
-            <li>
-              <span role="img" aria-label="rocket">
-                🚀
-              </span>
-              {' Production-ready'}
-            </li>
-          </ul>
-          <p>
-            {'Check my GitHub project for more information about '}
-            <a href="https://github.com/stefanibus/crawlAndScrape/">
-              Nextjs crawl and scrape
-            </a>
-          </p>
-        </Main>
+                <path
+                  className="elementor-shape-fill opacity-30"
+                  d="M0 0L0 18.8 141.8 4.1 283.5 18.8 283.5 0z"
+                />
+                <path
+                  className="elementor-shape-fill opacity-30"
+                  d="M0 0L0 12.6 141.8 4 283.5 12.6 283.5 0z"
+                />
+                <path
+                  className="elementor-shape-fill  opacity-30"
+                  d="M0 0L0 6.4 141.8 4 283.5 6.4 283.5 0z"
+                />
+                <path
+                  className="elementor-shape-fill"
+                  d="M0 0L0 1.2 141.8 4 283.5 1.2 283.5 0z"
+                />
+              </svg>
+            </div>
+          </div>
 
+          <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
+            <div className="max-w-4xl ">
+              <h1 className="font-bold text-2xl pt-12  ">
+                Clone each file matching with your searchterm
+              </h1>
+              <hr />
+              <h3 className="  pb-6 ">
+                Crawler and Scraper on NextJS using the API-service from
+                scraping-bot.io
+              </h3>
+              <p>
+                <span role="img" aria-label="rocket">
+                  🚀
+                </span>
+                This is a Web scraping service. The service will run a scrawl
+                through the content of an entire domain of your choice. It will
+                extract data without getting blocked. Users can configure their
+                scrawl-settings before they start scrawling. Users can choose
+                between:
+              </p>
+              <ul className="list-inside  list-disc">
+                <li>five different CrawlingDepth's </li>
+                <li>the Domain / Webpage they want to scrawl</li>
+                <li>
+                  {' '}
+                  a searchterm to search for specific content inside of the
+                  Domain{' '}
+                </li>
+              </ul>
+              <p>
+                The user may apply a searchstring: All pages containing that
+                string will be considered relevant, and thus copied and saved to
+                the server. PS: The maximum-crawling-depth of this bot is
+                limited to a depth of 5 levels.
+                <span role="img" aria-label="zap">
+                  ⚡️
+                </span>
+                <br />
+              </p>
+
+              <h1 className="pt-12 font-bold text-2xl">First Demo</h1>
+              <p>
+                The first Example will search all across the domain:
+                nevelingreply.de. It will scrape all pages containing the term
+                &quot;Dienstleister&quot; achross all pages. Matching pages will
+                be cloned to our server.
+              </p>
+              <DemoScraper
+                pointToStart="nevelingreply.de/competence"
+                pointToStartFullURL="https://nevelingreply.de/competence"
+                depthToCrawl={2}
+                termToSearch="Dienstleister"
+                staticReference="scraped-neverling.json"
+              />
+              <Divider />
+
+              <h1 className="pt-12 font-bold text-2xl">Second Demo</h1>
+
+              <p>
+                The second Example searches all across the domain:
+                scraping-bot.io. and scrapes all pages containing the term
+                &quot;my paragraph of&quot;. All pages containing that
+                searchstring-term will be stored to our server.
+              </p>
+              <DemoScraper
+                pointToStart="scraping-bot.io/crawler/second-page.html"
+                pointToStartFullURL="https://www.scraping-bot.io/crawler/second-page.html"
+                depthToCrawl={5}
+                termToSearch="my paragraph of the second page"
+                staticReference="scraped-scraping-bot.json"
+              />
+              <Divider />
+              <h1 className="pt-12 font-bold text-2xl">Third Demo</h1>
+              <p>
+                The third Example scrapes across: triplesensereply.de to find
+                all pages containing the term &quot;Frontend Developer&quot;.
+                All pages containing that searchstring-term will be found and
+                then stored to our server.
+              </p>
+              <DemoScraper
+                pointToStart="triplesensereply.de/agentur"
+                pointToStartFullURL="https://www.triplesensereply.de/agentur/"
+                depthToCrawl={1}
+                termToSearch="Frontend Developer"
+                staticReference="scraped-triplesensereply.json"
+              />
+              <Comment />
+            </div>
+          </div>
+        </Main>
         {/* Tracking Pixel */}
-        {/* {dimensions && <div className="hidden">{trackingPixel()}</div>} */}
         <div className="hidden">{trackingPixel()}</div>
       </div>
     </>

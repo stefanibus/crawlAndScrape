@@ -1,5 +1,3 @@
-
-
 @tailwind base;
 @tailwind components;
 
@@ -15,13 +13,6 @@ a {
 a:hover {
   @apply text-customblue-400   border-b border-customred-100  border-opacity-75;
 }
-/* 
-a.external[target="_blank"]::after {
-  position: absolute;
-  opacity: .5;
-  margin: -8px 0px 0px 8px;
-  content: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAQElEQVR42qXKwQkAIAxDUUdxtO6/RBQkQZvSi8I/pL4BoGw/XPkh4XigPmsUgh0626AjRsgxHTkUThsG2T/sIlzdTsp52kSS1wAAAABJRU5ErkJggg==); 
-} */
 
 @tailwind components;
 
@@ -45,7 +36,40 @@ a.external[target="_blank"]::after {
 
 @tailwind utilities;
 
+.frameForElementor {
+  box-sizing: border-box;
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  width: 100%;
+  line-height: 0;
+  direction: ltr;
+  transform: rotate(
+180deg);
+  position: absolute;
+  bottom: 0px 
+}
 
-/* .shiftBy {
-  transform:  translate(0px, -2.50px)
-} */
+.elementor { 
+    display: block;
+    width: calc(100% + 1.3px);
+    position: relative;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%);
+    overflow: hidden;
+    height: 52px;   
+}
+
+.elementor-shape-fill {   
+  fill: white;    
+  }
+ 
+  @media (max-width: 767px) {    
+  .elementor { 
+       height: 22px;   
+  } 
+}
+
+ 

@@ -143,7 +143,7 @@ export const DemoScraper = ({
         </dl>
       </div>{' '}
       <div className="overflow-hidden text-center transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-105  origin-top">
-        <pre className="scrollbar-none overflow-x-auto p-6 text-sm sm:leading-relaxed leading-loose  language-html text-white bg-gradient-to-r from-customblue-300 to-customblue-400 bg-opacity-75 whitespace-pre-wrap   break-words  sm:h-40 ">
+        <pre className="scrollbar-none overflow-x-auto p-6 text-sm sm:leading-relaxed leading-loose  language-html text-white bg-gradient-to-r from-customblue-300 to-customblue-400 bg-opacity-75 whitespace-pre-wrap   break-words  sm:h-32   flex items-center justify-center ">
           <code className="language-html">
             <span className="token tag">
               <span className="token tag">
@@ -151,7 +151,7 @@ export const DemoScraper = ({
                   {server}/api/
                   <div className="has-tooltip  inline-block">
                     <span className="hidden sm:block  tooltip absolute bottom-2 right-12  text-customred-100 bg-white rounded-lg px-3">
-                      CrawlingDepth
+                      CrawlingDepth (Param)
                     </span>
                     <a className=" ScrawlingDepth font-bold  text-code-100  p-1  hover:bg-white rounded-lg hover:border-white  hover:bg-opacity-50 ">
                       {depthToCrawl}
@@ -161,7 +161,7 @@ export const DemoScraper = ({
                   <div className="has-tooltip  inline-block">
                     ?crawlURL=
                     <span className="hidden sm:block  tooltip absolute bottom-2 right-12  text-customred-100 bg-white rounded-lg px-3  ">
-                      CrawlURL
+                      CrawlURL (Param)
                     </span>
                     <a className=" crawlURL font-bold text-yellow-400   p-1  hover:bg-white rounded-lg hover:border-white hover:bg-opacity-50 ">
                       {pointToStartFullURL}
@@ -170,7 +170,7 @@ export const DemoScraper = ({
                   <div className="has-tooltip  inline-block">
                     ?searchString=
                     <span className="hidden sm:block  tooltip absolute bottom-2 right-12  text-customred-100 bg-white rounded-lg px-3">
-                      searchString
+                      searchString (Param)
                     </span>
                     <a className=" searchString font-bold text-yellow-400   p-1  hover:bg-white rounded-lg hover:border-white hover:bg-opacity-50   ">
                       {`${termToSearch}`}

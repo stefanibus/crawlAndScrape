@@ -16,13 +16,10 @@ module.exports = {
       '4xl': '2.25rem',
       '5xl': '3rem',
       '6xl': '4rem',
-      'logo': '1.4rem'
+      'logo': '1.4rem',
+      'heroImg': '1200px' 
     },
     extend: {
-      
-      spacing: {
-          '46%': '46.09%', // pb-46% will ensure the same aspect ratio as the Image on the About page has by default, see: https://stackoverflow.com/questions/1495407/maintain-the-aspect-ratio-of-a-div-with-css  This will take care of the aspect-ratio between the width and the height for the Hero Image on the Startpage*/
-      },
       backgroundImage: theme => ({
         'hero-about': "url('https://crawl-and-scrape.vercel.app/assets/images/scraping-animated_.gif')", 
        }),
@@ -65,10 +62,11 @@ module.exports = {
         customblue: { 
           50: '#fcfeff', 
           100: '#304f84', 
-          150: '#4575c4', 
+          150: '#05177f', 
           200: '#17367d',
           300: '#120e34', 
           400: '#231f53',
+          500: '#4575c4', 
         },
       },
     },

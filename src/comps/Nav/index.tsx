@@ -16,7 +16,7 @@ function classNames(...classes: string[]) {
 export const Navigation = () => {
   return (
     <>
-      <Disclosure as="nav" className="bg-gray-800">
+      <Disclosure as="nav" className="bg-gray-800 border-b border-gray-800">
         {({ open }) => (
           <>
             <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
@@ -184,6 +184,24 @@ export const Navigation = () => {
           </>
         )}
       </Disclosure>
+
+      <nav className="p-6 bg-customblue-150  ">
+        <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
+          <div className="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
+            <div className="text-sm lg:flex-grow invisible " />
+            <div className="grid justify-items-center">
+              <a
+                href="https://github.com/stefanibus/crawlAndScrape/"
+                rel="noreferrer"
+                target="_blank"
+                className="  inline-block text-sm px-4 py-2 leading-none border rounded text-customblue-50 border-white hover:border-transparent hover:text-customblue-400 hover:bg-white mt-4 lg:mt-0"
+              >
+                GitHub Project
+              </a>
+            </div>
+          </div>
+        </div>
+      </nav>
     </>
   )
 }

@@ -1,6 +1,6 @@
 export const AppConfig = {
   site_name: 'Starter',
-  title: 'Crawler and Scraper for nevelingreply.de on NextJS',
+  title: 'Crawler and Scraper',
   description: 'Using an API-service from scraping-bot.io',
   locale: 'de_DE',
 }
