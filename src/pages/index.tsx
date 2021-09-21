@@ -160,10 +160,12 @@ const Index = () => {
               <h1 className="pt-12 font-bold text-2xl">Third Demo</h1>
               <p>
                 The third Example scrapes across: triplesensereply.de
-                <br />and find all pages containing the term &quot;Frontend
-                Developer&quot;. 
-                <br />All pages containing that searchstring-term
-                will be found and stored to the server.
+                <br />
+                and find all pages containing the term &quot;Frontend
+                Developer&quot;.
+                <br />
+                All pages containing that searchstring-term will be found and
+                stored to the server.
               </p>
               <DemoScraper
                 pointToStart="triplesensereply.de/agentur"
