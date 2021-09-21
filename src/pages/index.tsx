@@ -1,6 +1,5 @@
 import React from 'react'
 
-import CSS from 'csstype'
 import { useRouter } from 'next/router'
 
 import { Comment } from '../comps/Comment'
@@ -22,20 +21,6 @@ const Index = () => {
     )
   }
 
-  const startPageHeroBackground: CSS.Properties = {
-    // position: 'absolute',
-    position: 'absolute',
-    backgroundColor: '#05177e',
-    width: '100%',
-    height: '242px',
-    bottom: '0',
-    zIndex: -1,
-  }
-
-  const heroImage = {
-    clipPath: 'inset(0% 1% 0% 0%)',
-  }
-
   return (
     <>
       <div>
@@ -47,17 +32,12 @@ const Index = () => {
             />
           }
         >
-          <div className="mx-auto flex items-center justify-center flex-wrap relative">
-            <div style={startPageHeroBackground}>&nbsp;</div>
+          <div className=" mx-auto flex items-center justify-center flex-wrap relative bg-customblue-150">
             <img
-              style={heroImage}
-              src={`${router.basePath}/assets/images/scraping-animated_darkblue.gif
-              
-              `}
+              src={`${router.basePath}/assets/images/about.png`}
               alt="Nextjs starter banner"
             />
-
-            <div className="frameForElementor">
+            <div className="frameForElementor ">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 283.5 19.6"

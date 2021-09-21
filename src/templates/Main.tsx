@@ -24,7 +24,7 @@ const Main = (props: IMainProps) => {
 
         <div
           className={`pb-5 mt-px  text-xl content ${
-            router.pathname === '/' ? 'nix' : '-mt-px'
+            router.pathname === '/' && '-mt-px'
           }`}
         >
           {props.children}
