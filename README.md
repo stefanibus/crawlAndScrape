@@ -90,35 +90,7 @@ Open http://localhost:3000 with your favorite browser to see your project.
 
 ```
  
-
-### Deploy to production
-
-You can see the results locally in production mode with:
-
-```
-$ npm run build
-$ npm run start
-```
-
-The generated HTML and CSS files are minified (built-in feature from Next js). It will also removed unused CSS from [Tailwind CSS](https://tailwindcss.com).
  
-
-### Deploy to Vercel
-
-Clone this repository on own GitHub account and deploy to Vercel:
- 
- 
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https%3A%2F%2Fgithub.com%2Fstefanibus%2FcrawlAndScrape)
- 
-
-
-### License
-
-Licensed under the MIT License, Copyright © 2020
-
-See [LICENSE](LICENSE) for more information.
-
 ---
 
 Made with ♥ by [make-mobile.de](https://make-mobile.de)  

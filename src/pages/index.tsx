@@ -87,22 +87,20 @@ const Index = () => {
           <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
             <div className="max-w-4xl ">
               <h1 className="font-bold text-2xl pt-12  ">
-                Clone each file matching with your searchterm
+                Crawler and Scraper will search each file
+                <br />
+                and clone all files matching your searchterm
               </h1>
               <hr />
-              <h3 className="  pb-6 ">
-                Crawler and Scraper on NextJS using the API-service from
-                scraping-bot.io
-              </h3>
+              <h3 className="  pb-6 ">using an API from scraping-bot.io</h3>
               <p>
                 <span role="img" aria-label="rocket">
                   🚀
                 </span>
-                This is a Web scraping service. The service will run a scrawl
-                through the content of an entire domain of your choice. It will
-                extract data without getting blocked. Users can configure their
-                scrawl-settings before they start scrawling. Users can choose
-                between:
+                This web-scraping tool will scrawl through the content of an
+                entire domain of your choice. It will extract data without
+                getting blocked. Users can configure the following
+                scrawl-settings before they start scrawling:
               </p>
               <ul className="list-inside  list-disc">
                 <li>five different CrawlingDepth's </li>
@@ -114,10 +112,9 @@ const Index = () => {
                 </li>
               </ul>
               <p>
-                The user may apply a searchstring: All pages containing that
-                string will be considered relevant, and thus copied and saved to
-                the server. PS: The maximum-crawling-depth of this bot is
-                limited to a depth of 5 levels.
+                All pages containing the searchstring will be considered
+                relevant, and thus copied and saved to the server. PS: The
+                maximum-crawling-depth is limited to a depth of 5 levels.
                 <span role="img" aria-label="zap">
                   ⚡️
                 </span>
@@ -127,7 +124,9 @@ const Index = () => {
               <h1 className="pt-12 font-bold text-2xl">First Demo</h1>
               <p>
                 The first Example will search all across the domain:
-                nevelingreply.de. It will scrape all pages containing the term
+                nevelingreply.de.
+                <br />
+                It will scrape all pages containing the term
                 &quot;Dienstleister&quot; achross all pages. Matching pages will
                 be cloned to our server.
               </p>
@@ -144,9 +143,11 @@ const Index = () => {
 
               <p>
                 The second Example searches all across the domain:
-                scraping-bot.io. and scrapes all pages containing the term
-                &quot;my paragraph of&quot;. All pages containing that
-                searchstring-term will be stored to our server.
+                scraping-bot.io.
+                <br />
+                It scrapes all pages containing the term &quot;my paragraph
+                of&quot;. All pages containing that searchstring-term will be
+                stored to our server.
               </p>
               <DemoScraper
                 pointToStart="scraping-bot.io/crawler/second-page.html"
@@ -158,10 +159,11 @@ const Index = () => {
               <Divider />
               <h1 className="pt-12 font-bold text-2xl">Third Demo</h1>
               <p>
-                The third Example scrapes across: triplesensereply.de to find
-                all pages containing the term &quot;Frontend Developer&quot;.
-                All pages containing that searchstring-term will be found and
-                then stored to our server.
+                The third Example scrapes across: triplesensereply.de
+                <br />and find all pages containing the term &quot;Frontend
+                Developer&quot;. 
+                <br />All pages containing that searchstring-term
+                will be found and stored to the server.
               </p>
               <DemoScraper
                 pointToStart="triplesensereply.de/agentur"

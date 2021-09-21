@@ -6,7 +6,7 @@ import { BellIcon, MenuIcon, XIcon } from '@heroicons/react/outline'
 
 const naviArray = [
   { name: 'Home', href: '/', current: false },
-  { name: 'About', href: '/about', current: false },
+  { name: 'Contact', href: '/contact', current: false },
 ]
 
 function classNames(...classes: string[]) {
@@ -69,7 +69,7 @@ export const Navigation = () => {
                             item.current
                               ? 'bg-gray-900 text-white'
                               : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                            'px-3 py-2 rounded-md text-sm font-medium',
+                            'px-3 py-2 rounded-md text-lg font-medium',
                           )}
                           aria-current={item.current ? 'page' : undefined}
                         >
@@ -122,7 +122,7 @@ export const Navigation = () => {
                               href="#"
                               className={classNames(
                                 active ? 'bg-gray-100' : '',
-                                'block px-4 py-2 text-sm text-gray-700',
+                                'block px-4 py-2 text-lg text-gray-700',
                               )}
                             >
                               Your Profile
@@ -135,7 +135,7 @@ export const Navigation = () => {
                               href="#"
                               className={classNames(
                                 active ? 'bg-gray-100' : '',
-                                'block px-4 py-2 text-sm text-gray-700',
+                                'block px-4 py-2 text-lg text-gray-700',
                               )}
                             >
                               Settings
@@ -188,7 +188,7 @@ export const Navigation = () => {
       <nav className="p-6 bg-customblue-150  ">
         <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
           <div className="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
-            <div className="text-sm lg:flex-grow invisible " />
+            <div className="text-lg lg:flex-grow invisible " />
             <div className="grid justify-items-center">
               <a
                 href="https://github.com/stefanibus/crawlAndScrape/"

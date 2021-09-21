@@ -40,7 +40,7 @@ const About = () => {
         </div>
       </div>
       <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
-        <h1 className="font-bold text-2xl  pt-12 pb-6">About...</h1>
+        <h1 className="font-bold text-2xl  pt-12 pb-6">Contact...</h1>
         <p>
           <span role="img" aria-label="rocket">
             🚀

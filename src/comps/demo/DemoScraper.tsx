@@ -34,56 +34,56 @@ export const DemoScraper = ({
       <div className="border-t border-gray-200 px-4 py-5 sm:p-0">
         <dl className="sm:divide-y sm:divide-gray-200">
           <div className="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-            <dt className="text-sm font-medium text-gray-500">
+            <dt className="text-base font-medium text-gray-500">
               Crawler Startingpoint
             </dt>
-            <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+            <dd className="mt-1 text-base text-gray-900 sm:mt-0 sm:col-span-2">
               {pointToStart}
             </dd>
           </div>
           <div className="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-            <dt className="text-sm font-medium text-gray-500">
+            <dt className="text-base font-medium text-gray-500">
               CrawlingDepth Limit:
             </dt>
-            <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+            <dd className="mt-1 text-base text-gray-900 sm:mt-0 sm:col-span-2">
               {`Level ${depthToCrawl}`}
             </dd>
           </div>
           <div className="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-            <dt className="text-sm font-medium text-gray-500">
+            <dt className="text-base font-medium text-gray-500">
               Scraper-Searchterm
             </dt>
-            <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+            <dd className="mt-1 text-base text-gray-900 sm:mt-0 sm:col-span-2">
               {`${depthToCrawl}`}
             </dd>
           </div>
           <div className="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-            <dt className="text-sm font-medium text-gray-500">
+            <dt className="text-base font-medium text-gray-500">
               IF Searchterm is true
             </dt>
-            <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+            <dd className="mt-1 text-base text-gray-900 sm:mt-0 sm:col-span-2">
               store all result-pages to server (JSON-File)
             </dd>
           </div>
           <div className="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-            <dt className="text-sm font-medium text-gray-500">About</dt>
-            <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+            <dt className="text-base font-medium text-gray-500">About</dt>
+            <dd className="mt-1 text-base text-gray-900 sm:mt-0 sm:col-span-2">
               {`The Crawler will begin to search for all links at the initial
-              Startingpoint (as provided for the Crawler). From there, all LINKS
+              Startingpoint, as provided by the user. From there, all LINKS
               will be crawled down to the provided Level of Crawling Depth (in
               this case: ${depthToCrawl}). The entire content of all pages will
-              be scraped and EACH page containing the relevant searchterm (in
-              this case: "${termToSearch}") will be stored in one
-              single JSON FILE (FullBody HTML Content) on our server.`}
+              be scraped and each page containing the relevant searchterm will be stored in one
+              single JSON FILE as FullBody HTML Content on our server. In
+                this demo searchterm is = "${termToSearch}". `}
             </dd>
           </div>
           <div className="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-            <dt className="text-sm font-medium text-gray-500">
+            <dt className="text-base font-medium text-gray-500">
               Reference Links
             </dt>
-            <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+            <dd className="mt-1 text-base text-gray-900 sm:mt-0 sm:col-span-2">
               <ul className="border border-gray-200 rounded-md divide-y divide-gray-200">
-                <li className="pl-3 pr-4 py-3 flex items-center justify-between text-sm">
+                <li className="pl-3 pr-4 py-3 flex items-center justify-between text-base">
                   <div className="w-0 flex-1 flex items-center">
                     <FingerPrintIcon
                       className="flex-shrink-0 h-5 w-5 text-gray-400"
@@ -113,7 +113,7 @@ export const DemoScraper = ({
                     </div>
                   </div>
                 </li>
-                <li className="pl-3 pr-4 py-3 flex items-center justify-between text-sm">
+                <li className="pl-3 pr-4 py-3 flex items-center justify-between text-base">
                   <div className="w-0 flex-1 flex items-center">
                     <DocumentReportIcon
                       className="flex-shrink-0 h-5 w-5 text-gray-400"
@@ -163,7 +163,7 @@ export const DemoScraper = ({
                     <span className="hidden sm:block  tooltip absolute bottom-2 right-12  text-customred-100 bg-white rounded-lg px-3  ">
                       CrawlURL (Param)
                     </span>
-                    <a className=" crawlURL font-bold text-yellow-400   p-1  hover:bg-white rounded-lg hover:border-white hover:bg-opacity-50 ">
+                    <a className=" crawlURL font-bold text-yellow-400   p-1  hover:bg-white rounded-lg hover:border-white hover:bg-opacity-50 break-all ">
                       {pointToStartFullURL}
                     </a>
                   </div>
