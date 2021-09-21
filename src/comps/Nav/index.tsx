@@ -99,7 +99,6 @@ export const Navigation = () => {
                             type="image/avif"
                           />
                           <img
-                            loading="lazy"
                             className="h-8 w-8 rounded-full"
                             src="../assets/images/photo.jpg"
                             alt="Pic-of-a-User"
