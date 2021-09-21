@@ -100,7 +100,7 @@ export const Navigation = () => {
                           />
                           <img
                             className="h-8 w-8 rounded-full"
-                            src="../assets/images/photo.jpg"
+                            src="../assets/images/photo.png"
                             alt="Pic-of-a-User"
                           />
                         </picture>
