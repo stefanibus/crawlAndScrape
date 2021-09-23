@@ -33,7 +33,7 @@ const Main = (props: IMainProps) => {
           {` © Copyright ${new Date().getFullYear()} ${
             AppConfig.title
           }. Powered with `}
-          <span role="img" aria-label="Love">
+          <span role="img" aria-label="Love" className="text-customred-100">
             {` ♥ `}
           </span>
           by <a href="https://make-mobile.de">Make-Mobile.de</a>
