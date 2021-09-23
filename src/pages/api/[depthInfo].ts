@@ -3,6 +3,8 @@
 // DOCUMENTATION = https://github.com/Scrapingbot/crawler
 // API Documentation = https:/www.scraping-bot.io/web-scraping-documentation/
 
+// ES6 or TypeScript:
+import * as cheerio from 'cheerio'
 import { NextApiRequest, NextApiResponse } from 'next'
 
 import { server } from '../../utils/AppConfig'
@@ -12,6 +14,8 @@ import {
   weGiveUpHere,
   weHaveAnError,
 } from '../../utils/TextForPagesAPI'
+
+// const cheerio = require('cheerio')
 
 let stillScraping = true
 let errorMessage = false
@@ -32,7 +36,6 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
   const rp = util.promisify(request)
   const sleep = util.promisify(setTimeout)
-  const cheerio = require('cheerio')
 
   /* eslint-enable global-require */
 
@@ -198,15 +201,11 @@ async function crawlBFS(startURL: string | string[] | undefined, maxDepth: numbe
 
       const links = $('body')
         .find('a')
-        // eslint-disable-next-line
- 
-        // eslint-disable-next-line
-        .filter(function (_i: any, _el: any) {
-          // eslint-disable-next-line
+        // eslint-disable-next-line func-names
+        .filter(function someName(_i: any, _el: any) {
           return $(this).attr('href') != null
         })
-        // eslint-disable-next-line no-unused-vars, func-names
-        .map(function (_i: any, _x: any) {
+        .map(function someName(_i: any, _x: any) {
           return $(this).attr('href')
         })
 
