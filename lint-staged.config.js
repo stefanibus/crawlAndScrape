@@ -3,11 +3,11 @@
 // const micromatch = require('micromatch')
 
 module.exports = {
-  // '*.{js, ts}': (files) => {
-  //   // from `files` filter those _NOT_ matching `*test.js`
-  //   const match = micromatch.not(files, '**/api/*')
-  //   return `eslint ${match.join(' ')}`
-  // },
+  '*.{js, ts}': (files) => {
+    // from `files` filter those _NOT_ matching `*test.js`
+    const match = micromatch.not(files, '**/api/*')
+    return `eslint ${match.join(' ')}`
+  },
  
   
   // '*.{js,jsx,ts,tsx}': ['eslint --fix', 'eslint'],
