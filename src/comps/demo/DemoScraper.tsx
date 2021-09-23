@@ -68,13 +68,7 @@ export const DemoScraper = ({
           <div className="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
             <dt className="text-base font-medium text-gray-500">About</dt>
             <dd className="mt-1 text-base text-gray-900 sm:mt-0 sm:col-span-2">
-              {`The Crawler will begin to search for all links at the initial
-              Startingpoint, as provided by the user. From there, all LINKS
-              will be crawled down to the provided Level of Crawling Depth (in
-              this case: ${depthToCrawl}). The entire content of all pages will
-              be scraped and each page containing the relevant searchterm will be stored in one
-              single JSON FILE as FullBody HTML Content on our server. In
-                this demo searchterm is = "${termToSearch}". `}
+              {`The Crawler will begin at the Startingpoint and crawl as deep as defined per Crawling Depth. The JSON FILE stores all Pages containing the searchterm. `}
             </dd>
           </div>
           <div className="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
