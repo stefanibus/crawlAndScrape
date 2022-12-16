@@ -141,7 +141,7 @@ export const DemoScraper = ({
           <code className="language-html">
             <span className="token tag">
               <span className="token tag">
-                <span className="domain and path">
+                <span className="text-white" id="domain_and_path">
                   {server}/api/
                   <div className="has-tooltip  inline-block">
                     <span className="hidden sm:block  tooltip absolute bottom-2 right-12  text-customred-100 bg-white rounded-lg px-3">
