@@ -7,7 +7,7 @@
     "url": ""
   },
   "scripts": {
-    "dev": "next dev",
+    "dev": "export SET NODE_OPTIONS=--openssl-legacy-provider && next dev",
     "build": "next build",
     "start": "next start",
     "build-stats": "cross-env ANALYZE=true npm run build",
